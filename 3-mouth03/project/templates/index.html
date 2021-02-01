@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>博客项目首页</title>
+
+  <link rel="stylesheet" href="../static/css/index.css">
+  <!-- 在index.css后引入 -->
+  <link rel="stylesheet" href="../static/css/easyfader.css">
+
+  <script src="../static/js/jquery.min.js"></script>
+  <script src="../static/js/jquery.easyfader.min.js"></script>
+  <script src="../static/js/blogs.data.js"></script>
+  <script src="../static/js/fader.data.js"></script>
+  <!-- 自定义 JS文件 -->
+  <script src="../static/js/index.js"></script>
+</head>
+
+<body>
+  <header>
+    <!-- 导航栏 -->
+    <nav>
+      <!-- logo -->
+      <h1 class="logo">
+        <a href="#">个人博客</a>
+      </h1>
+      <!-- 导航菜单 -->
+      <!-- u>li*6>a -->
+      <ul>
+        <li><a href="#">网站首页</a></li>
+        <li><a href="#">文章列表</a></li>
+        <li><a href="#">我的相册</a></li>
+        <li><a href="#">留言</a></li>
+        <li><a href="#">关于我</a></li>
+        <li><a href="#">发表博客</a></li>
+      </ul>
+      <!-- 登录注册 -->
+      <div>
+        <a href="#" id="register">注册</a>
+        <a href="#" id="login">登录</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <!-- 上半部分内容  轮播图  侧边图片 -->
+    <div>
+      <!-- 左侧轮播图 -->
+      <div class="banner">
+        <!-- 轮播图的父元素 -->
+        <ul class="fader">
+          <!-- li*3 -->
+
+          <li class="fader_controls">
+            <!-- 左右箭头 -->
+            <div class="page prev" data-target=" prev">&lt;</div>
+            <div class="page next" data-target="next">&gt;</div>
+            <!-- 轮播图页标(小圆点) -->
+            <ul class="pager_list">
+              
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- 右侧侧边图片 -->
+      <ul class="toppic">
+        <li>
+          <a href="#">
+            <img src="../static/images/toppic01.jpg" alt="">
+            <div>linux升级py3，安装pip,svn</div>
+            <span>Linux</span>
+          </a>
+        </li>
+        <li>
+          <a href="#">
+            <img src="../static/images/toppic02.jpg" alt="">
+            <div>精通python编程——python深入浅出教程</div>
+            <span>Python</span>
+          </a>
+        </li>
+      </ul>
+
+      <div class="clear"></div>
+    </div>
+    <!-- 下半部分内容 博客 -->
+    <div class="blogsbox">
+      
+    </div>
+  </main>
+
+  <footer>
+    <div>
+      Design by 
+      <a href="#">个人博客</a>
+      <a href="#">备XXXXXXXX号-1</a>
+    </div>
+  </footer>
+
+</body>
+
+</html>

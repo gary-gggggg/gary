@@ -1,0 +1,493 @@
+<!doctype html>
+<html>
+<!--
+author:lvlu
+date:2018-07
+desc:this demo is about blog. PLEASE NOTE:If you have trouble running it ,try any of the other demos or connect with auther.
+A ny individuals and organizations and not for commercial use, professiona website for customized web site.
+-->
+<head>
+  <meta charset="utf-8">
+  <title>首页_个人博客</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="static/images/bitbug_favicon.ico" type="static/image/x-icon" />
+  <link href="static/css/base.css" rel="stylesheet">
+  <link href="static/css/index.css" rel="stylesheet">
+  <link href="static/css/m.css" rel="stylesheet">
+  <script src="static/js/jquery.min.js" type="text/javascript"></script>
+  <script src="static/js/jquery.easyfader.min.js"></script>
+  <script src="static/js/scrollReveal.js"></script>
+  <script src="static/js/common.js"></script>
+</head>
+
+<body>
+  <header id="header">
+    <!--menu begin-->
+    <div class="menu">
+      <nav class="nav" id="topnav">
+        <h1 class="logo"><a href="index.html">个人博客</a></h1>
+        <li><a href="index.html">网站首页</a> </li>
+        <li><a href="list.html">文章列表</a>
+          <ul class="sub-nav">
+            <li><a href="list.html">Python</a></li>
+            <li><a href="list.html">python Web</a></li>
+            <li><a href="list.html">爬虫</a></li>
+            <li><a href="list.html">人工智能</a></li>
+            <li><a href="list.html">JS实例索引</a></li>
+          </ul>
+        </li>
+        <li><a href="photo.html">我的相册</a>
+        </li>
+        <li><a href="gbook.html">留言</a> </li>
+        <li><a href="about.html">关于我</a> </li>
+        <li><a href="release.html">发表博客</a></li>
+      </nav>
+    </div>
+    <a href="/login" id="login" target="_blank">登录</a>
+    <a href="/register" id="register" target="_blank">注册</a>
+    <!--menu end-->
+    <!--mnav begin-->
+    <div id="mnav">
+      <h2><a href="index.html" class="mlogo">个人博客</a><span class="navicon"></span></h2>
+      <dl class="list_dl">
+        <dt class="list_dt"> <a href="index.html">网站首页</a> </dt>
+        <dt class="list_dt"> <a href="#">文章列表</a> </dt>
+        <dd class="list_dd">
+          <ul>
+            <li><a href="list.html">Python</a></li>
+            <li><a href="list.html">python Web</a></li>
+            <li><a href="list.html">爬虫</a></li>
+            <li><a href="list.html">人工智能</a></li>
+            <li><a href="list.html">JS实例索引</a></li>
+          </ul>
+        </dd>
+        <dt class="list_dt"> <a href="photo.html">我的相册</a> </dt>
+        <dt class="list_dt"> <a href="time.html">时间轴</a> </dt>
+        <dt class="list_dt"> <a href="gbook.html">留言</a> </dt>
+        <dt class="list_dt"> <a href="about.html">关于我</a> </dt>
+      </dl>
+    </div>
+    <!--mnav end-->
+
+
+  </header>
+  <article>
+    <!--banner begin-->
+    <div class="picsbox">
+      <div class="banner">
+        <div id="banner" class="fader">
+          <li class="slide"><a href="info.html" target="_blank"><img src="static/images/banner01.jpg"><span class="imginfo">爬虫微课5小时
+                python学习路线!</span></a></li>
+          <li class="slide"><a href="info.html" target="_blank"><img src="static/images/banner02.jpg"><span class="imginfo">干货|如何优雅的在手机上进行Python编程</span></a></li>
+          <li class="slide"><a href="info.html" target="_blank"><img src="static/images/banner03.jpg"><span class="imginfo">python-win10下使用定时任务执行程序</span></a></li>
+          <div class="fader_controls">
+            <div class="page prev" data-target="prev">&lsaquo;</div>
+            <div class="page next" data-target="next">&rsaquo;</div>
+            <ul class="pager_list">
+            </ul>
+          </div>
+        </div>
+      </div>
+      <!--banner end-->
+      <div class="toppic">
+        <li> <a href="info.html" target="_blank"> <i><img src="static/images/toppic01.jpg"></i>
+            <h2>linux升级py3,安装pip,svn</h2>
+            <span>Linux</span>
+          </a> </li>
+        <li> <a href="info.html" target="_blank"> <i><img src="static/images/zd01.jpg"></i>
+            <h2>精通Python编程——Python深入浅出教程</h2>
+            <span>python</span>
+          </a> </li>
+      </div>
+    </div>
+    <div class="blank"></div>
+    <!--blogsbox begin-->
+    <div class="blogsbox">
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">Python语言在人工智能(AI)中的优势 </a></h3>
+        <span class="blogpic"><a href="info.html" title=""><img src="static/images/toppic01.jpg" alt=""></a></span>
+        <p class="blogtext">本文探讨了Python语言在AI领域的优势与运用。 谁会成为AI 和大数据时代的第一开发语言? 这本已是一个不需要争论的问题。如果说三年前,Matlab、Scala、R、Java
+          ...</p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">python中打开TXT文件报错 </a></h3>
+        <p class="blogtext">python中打开TXT文件报错2017年03月09日 14:30:57 阅读数:676 在IDLE命令行引用一文件夹下的函数,来了条错误提示:FileNotFoundError:
+          [Errno 2] No such ...</p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view">4567已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">精通Python编程——Python深入浅出教程</a></h3>
+        <span class="bplist"><a href="info.html" title="">
+            <li><img src="static/images/avatar.jpg" alt=""></li>
+            <li><img src="static/images/toppic02.jpg" alt=""></li>
+            <li><img src="static/images/banner01.jpg" alt=""></li>
+          </a></span>
+        <p class="blogtext">Python 安装配置及基本语法篇 Python 语言速成 Python 基本知识 Python 常用表达式 Python 基础语法 Python 语法篇：菜鸟的Python笔记
+          Python精要参考：快速入门 《Python标... </p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">Python基础学习总结（一）</a></h3>
+        <span class="bigpic"><a href="info.html" title=""><img src="static/images/toppic01.jpg" alt=""></a></span>
+        <p class="blogtext">Python是一种解释型、面向对象、动态数据类型的高级程序设计语言。 Python 缩进与空行 Python 中文编码 Python 注释 Python 标识符 Python 保留字
+          Python 数据类型 Python 运算符 Python 条件语句 Python 循环语句... </p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">人生苦短 Python当歌</a></h3>
+        <span class="blogpic"><a href="info.html" title=""><img src="static/images/toppic01.jpg" alt=""></a></span>
+        <p class="blogtext">os模块对目录的操作os.getcwd() 获取当前工作目录,即当前Python脚本工作的目录路径import os print(os.getcwd()) #
+          C:\Users\Administrator\Desktop... </p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">Sublime text3作为Python的IDE不能正常使用input和raw_input</a></h3>
+        <p class="blogtext">[ {"key": ["ctrl+r"], "caption": "SublimeREPL: Python - RUN current file", "command":
+          "run_existing_window_command", "args": { "id": "......</p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view">4567已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">Python学习笔记：虚拟环境和包 </a></h3>
+        <span class="bplist"><a href="info.html" title="">
+            <li><img src="static/images/avatar.jpg" alt=""></li>
+            <li><img src="static/images/bi05.jpg" alt=""></li>
+            <li><img src="static/images/banner01.jpg" alt=""></li>
+          </a></span>
+        <p class="blogtext">本文来自：入门指南 开胃菜参考：开胃菜 使用Python解释器：使用Python解释器 本文对Python的简介：Python 简介 Python流程介绍：深入Python 流程
+          Python数据结构：Python 数据结构 Python：模块：Python 模块 Python：输入和输出Python 输入和输出 Python：错误和异常Python 错误和异常 Python：类Python：类
+          ...</p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">python学习网址以及笔记</a></h3>
+        <span class="blogpic"><a href="info.html" title=""><img src="static/images/toppic01.jpg" alt=""></a></span>
+        <p class="blogtext">python学习网址 点击打开链接 http://www.runoob.com/python/python-dictionary.html 主要内容有 Python 基础教程
+          Python 基础教程Python 简介Python 环境搭建Python 中文编码Python 基础语法Python 变量类型Python 运算符Python 条件语句... </p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">CentOS7下python开发环境配置</a></h3>
+        <p class="blogtext">Python在官方网站提供的Windows版本的安装包非常好用,一直‘下一步’就能够成功安装并配置好相应的运行环境,同时还自带pip等工具,非常的好用,但是在CentOS上的安装......</p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view">4567已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">Python 入门第一课--连接数据库的环境搭建 </a></h3>
+        <span class="bplist"><a href="info.html" title="">
+            <li><img src="static/images/avatar.jpg" alt=""></li>
+            <li><img src="static/images/toppic02.jpg" alt=""></li>
+            <li><img src="static/images/banner01.jpg" alt=""></li>
+          </a></span>
+        <p class="blogtext">Python 入门第一课 本文直接学习python连接数据库基本知识： Python环境搭建 Python连接Mysql数据库 Python连接oracle数据库
+          Python环境搭建 Python不做过多的介绍，本文安装的是3.5.0版本，开发工具使用PyCharm，安装步骤请参照。 —— [ python安装步骤 ] Python连接Mysql数据库 ...</p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">linux升级py3,安装pip,svn</a></h3>
+        <span class="bigpic"><a href="info.html" title=""><img src="static/images/toppic01.jpg" alt=""></a></span>
+        <p class="blogtext">【查看当前linux下python版本】 [root@localhost /]# python --version Python 2.6.6
+          【想要查看ubuntu中安装的Python路径】 【1.whereis python】： [root@localhost /]# whereis python python: /usr/bin/python
+          /us... </p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">Python基础概念_2_基础概念</a></h3>
+        <span class="blogpic"><a href="info.html" title=""><img src="static/images/toppic01.jpg" alt=""></a></span>
+        <p class="blogtext">基础概念 3 基础概念 3.1 数字 计算机最初设计时就是为了做数据运算的,所以针对这个概念应该不会陌生。在Python的世界里数主要有三种类型: 整数、浮点数和复数... </p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">python3 把\u开头的unicode转中文,把str形态的unicode转中文</a></h3>
+        <p class="blogtext">python3以上取消了decode,所以你直接想st.decode(“utf-8”)的话会报str没有decode方法的错 最后贴一下解决方案 >>> print
+          (a[0].encode('utf-8').......</p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view">4567已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">python环境安装和在eclipse中插件的使用</a></h3>
+        <span class="bplist"><a href="info.html" title="">
+            <li><img src="static/images/avatar.jpg" alt=""></li>
+            <li><img src="static/images/bi05.jpg" alt=""></li>
+            <li><img src="static/images/banner01.jpg" alt=""></li>
+          </a></span>
+        <p class="blogtext">目录 安装Python python for eclipse插件安装 配置PyDev插件 测试 python环境安装和python for eclipse插件安装
+          1、下载python环境和python for eclipse python环境和python for eclipse插件下载地址 在Windows命令行中使用Python 如果你想要从Windows命... </p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">python初步实现word2vec!</a></h3>
+        <span class="bigpic"><a href="info.html" title=""><img src="static/images/toppic01.jpg" alt=""></a></span>
+        <p class="blogtext">后来突然发现,我为什么要去安c语言版本的呢,我应该去用python版本的,然后就发现了gensim,安装个gensim的包就可以用word2vec了,不过gensim只实现了word2vec里面的...
+        </p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">python环境安装和在eclipse中插件的使用</a></h3>
+        <p class="blogtext">目录 安装Python python for eclipse插件安装 配置PyDev插件 测试 python环境安装和python for eclipse插件安装
+          1、下载python环境和python for eclipse python环境和python for eclipse插件下载地址 在Windows命令行中使用Python 如果你想要从Windows命...</p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view">4567已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">Python之if判断语句与while和for循环 </a></h3>
+        <span class="bplist"><a href="info.html" title="">
+            <li><img src="static/images/avatar.jpg" alt=""></li>
+            <li><img src="static/images/bi05.jpg" alt=""></li>
+            <li><img src="static/images/banner01.jpg" alt=""></li>
+          </a></span>
+        <p class="blogtext">Python之if判断语句与while和for循环 Python之if判断语句与while和for循环 5-1 Python之if语句 5-2 Python之 if-else 5-3
+          Python之 if-elif-else 5-4 Python之 for循环 5-5 Python之 while循环 5-6 Python之 break退出循环 5-7 Python之 continue继续循环
+          5-8... </p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+      <div class="blogs" data-scroll-reveal="enter bottom over 1s">
+        <h3 class="blogtitle"><a href="info.html" target="_blank">requests库和正则表达式之淘宝爬虫实战!</a></h3>
+        <span class="bigpic"><a href="info.html" title=""><img src="static/images/toppic01.jpg" alt=""></a></span>
+        <p class="blogtext">使用requests库是需要安装的，requests库相比urllib
+          库来说更高级方便一点，同时与scrapy相比较还是不够强大，本文主要介绍利用requests库和正则表达式完成一项简单的爬虫小项目----淘宝商品爬虫。... </p>
+        <div class="bloginfo">
+          <ul>
+            <li class="author"><a href="info.html">皮皮璐</a></li>
+            <li class="lmname"><a href="info.html">学无止境</a></li>
+            <li class="timer">2018-5-13</li>
+            <li class="view"><span>34567</span>已阅读</li>
+            <li class="like">9999</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <!--blogsbox end-->
+    <div class="sidebar">
+      <div class="zhuanti">
+        <h2 class="hometitle">特别推荐</h2>
+        <ul>
+          <li> <i><img src="static/images/banner03.jpg"></i>
+            <p>CentOS7下python开发环境配置 <span><a href="#">阅读</a></span> </p>
+          </li>
+          <li> <i><img src="static/images/b04.jpg"></i>
+            <p>Python基础概念_2_基础概念<span><a href="#">阅读</a></span></p>
+          </li>
+          <li> <i><img src="static/images/b05.jpg"></i>
+            <p>Python之if判断语句与while和for循环<span><a href="#">阅读</a></span></p>
+          </li>
+        </ul>
+      </div>
+      <div class="tuijian">
+        <h2 class="hometitle">推荐文章</h2>
+        <ul class="tjpic">
+          <i><img src="static/images/toppic01.jpg"></i>
+          <p><a href="#">python中打开TXT文件报错</a></p>
+        </ul>
+        <ul class="sidenews">
+          <li> <i><img src="static/images/toppic01.jpg"></i>
+            <p><a href="#">python学习网址以及笔记</a></p>
+            <span>2018-05-13</span>
+          </li>
+          <li> <i><img src="static/images/toppic02.jpg"></i>
+            <p><a href="#">CentOS7下python开发环境配置</a></p>
+            <span>2018-05-13</span>
+          </li>
+          <li> <i><img src="static/images/v1.jpg"></i>
+            <p><a href="#">python初步实现word2vec</a></p>
+            <span>2018-05-13</span>
+          </li>
+          <li> <i><img src="static/images/v2.jpg"></i>
+            <p><a href="#">Python之if判断语句与while和for循环</a></p>
+            <span>2018-05-13</span>
+          </li>
+        </ul>
+      </div>
+      <div class="tuijian">
+        <h2 class="hometitle">点击排行</h2>
+        <ul class="tjpic">
+          <i><img src="static/images/toppic01.jpg"></i>
+          <p><a href="#">Python语言在人工智能(AI)中的优势</a></p>
+        </ul>
+        <ul class="sidenews">
+          <li> <i><img src="static/images/toppic01.jpg"></i>
+            <p><a href="#">精通Python编程——Python深入浅出教程</a></p>
+            <span>2018-05-13</span>
+          </li>
+          <li> <i><img src="static/images/toppic02.jpg"></i>
+            <p><a href="#">人生苦短 Python当歌</a></p>
+            <span>2018-05-13</span>
+          </li>
+          <li> <i><img src="static/images/v1.jpg"></i>
+            <p><a href="#">Python学习笔记：虚拟环境和包</a></p>
+            <span>2018-05-13</span>
+          </li>
+          <li> <i><img src="static/images/v2.jpg"></i>
+            <p><a href="#">python中打开TXT文件报错</a></p>
+            <span>2018-05-13</span>
+          </li>
+        </ul>
+      </div>
+      <div class="cloud">
+        <h2 class="hometitle">标签云</h2>
+        <ul>
+          <a href="#">陌上花开</a> <a href="#">校园生活</a> <a href="#">html5</a> <a href="#">SumSung</a> <a href="#">青春</a> <a
+            href="#">温暖</a> <a href="#">阳光</a> <a href="#">三星</a><a href="#">索尼</a> <a href="#">华维荣耀</a> <a href="#">三星</a>
+          <a href="#">索尼</a>
+        </ul>
+      </div>
+      <div class="links">
+        <h2 class="hometitle">友情链接</h2>
+        <ul>
+          <li><a href="#" target="_blank">达内</a></li>
+          <li><a href="#" target="_blank">亿元级IT教育领军企业</a></li>
+          <li><a href="#" target="_blank">人工智能改变世界</a></li>
+        </ul>
+      </div>
+      <div class="guanzhu" id="follow-us">
+        <h2 class="hometitle">关注我们 么哒！</h2>
+        <ul>
+          <li class="sina"><a href="#" target="_blank"><span>微信公众号</span>达内</a></li>
+          <li class="tencent"><a href="#" target="_blank"><span>微信咨询</span>XXX</a></li>
+          <li class="qq"><a href="#" target="_blank"><span>QQ号</span>XXXXXX</a></li>
+          <li class="email"><a href="#" target="_blank"><span>邮箱帐号</span>tedu.cn</a></li>
+          <li class="wxgzh"><a href="#" target="_blank"><span>咨询电话</span>xxxxxxxxxxx</a></li>
+        </ul>
+      </div>
+    </div>
+  </article>
+  <footer id="footer">
+    <p>Design by <a href=# target="_blank">个人博客</a> <a href="#">备XXXXXXXXX号-1</a></p>
+  </footer>
+  <a href="#" class="cd-top">Top</a>
+</body>
+
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>test_xhr页面</title>
+</head>
+<body>
+<button onclick="testXhr()">
+    测试xhr
+</button>
+<script>
+    function testXhr(){
+        if(window.XMLHttpRequest){
+            var xhr = new XMLHttpRequest();
+            console.log(xhr);
+        }else{
+        var xhr = new ActiveXObject('Microsoft.XMLHTTP');
+        }
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>gary的一个博客项目首页</title>
+  <link rel="stylesheet" href="/home/tarena/mouth03/frontproject/static/css/index.css">；
+  <!-- 要重写的放在后面 -->
+  <link rel="stylesheet" href="/home/tarena/mouth03/frontproject/static/css/easyfader.css">；
+</head>
+<script src="/home/tarena/mouth03/frontproject/static/js/jquery.min.js"></script>
+<script src="/home/tarena/mouth03/frontproject/static/js/jquery.easyfader.min.js"></script>
+<script src="/home/tarena/mouth03/frontproject/static/js/blogs.data.js"></script>
+<script src="/home/tarena/mouth03/frontproject/static/js/fader.data.js"></script>
+<script src="/home/tarena/mouth03/frontproject/static/js/index.js"></script>
+<body>
+  <!-- <div id="header"></div>
+  <div id="main"></div>
+  <div id="footer"></div> -->
+  <header>
+    <nav>
+      <h1 class="logo">
+        <a href="#">个人博客</a>
+      </h1>
+      <ul>
+        <li class="giao"><a href="#">网站首页</a></li>
+        <li class="giao"><a href="#">我的相册</a></li>
+        <li class="giao"><a href="#">文章列表</a></li>
+        <li class="giao"><a href="#">留言</a></li>
+        <li class="giao"><a href="#">关于我们</a></li>
+        <li class="giao"><a href="#">发表博客</a></li>
+      </ul>
+      <div>
+        <a href="#" id="register">注册</a>
+        <a href="#" id="login">登录</a>
+      </div>
+    </nav>
+  </header>
+  <main>
+    <!-- 上半部分（轮播图，侧边图片） -->
+    <div>
+      <!-- 轮播图 -->
+      <div class="banner">
+        <ul class="fader">
+          <li class="fader_controls">
+            <!-- 左右箭头 -->
+            <div class="page lefta" data-target="lefta">&lt;</div>
+            <div class="page righta" data-target="righta">&gt;</div>
+            <ul class="pager_list">
+              <li></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <ul class="toppic">
+        <li id="llli1">
+            <a href="#">
+                <i>
+                    <img src="/home/tarena/mouth03/frontproject/static/images/toppic01.jpg" alt="">
+                </i>
+                <div>linux升级py3,安装pip,svn</div>
+                <span>Linux</span>
+            </a>
+        </li>
+        <li id="llli2">
+            <a href="#">
+                <i>
+                    <img src="/home/tarena/mouth03/frontproject/static/images/toppic02.jpg" alt="">
+                </i>
+                <div>精通Python编程--Python深入浅出教程</div>
+                <span>Python</span>
+            </a>
+        </li>
+    </ul>
+    
+    </div>
+    <div class="clear"></div>
+    <!-- 下半部分的内容 博客 -->
+    <div class="blogboxs">
+      <div class="blogs">
+        <h3 class="blogtitle">
+          <a href="#">python语音在人工智能中的优势</a>
+        </h3>
+        <div class="blogpic">
+          <a href="#">
+            <img src="/home/tarena/mouth03/frontproject/static/images/a.jpg" alt="">
+          </a>
+        </div>
+        <p class="blogtext">本文探讨了Python语言在AI领域的优势与运用。 谁会成为AI 和大数据时代的第一开发语言? 这本已是一个不需要争论的问题。如果说三年前,Matlab、Scala、R、Java...</p>
+        <ul>
+          <li id="liii1"><a href="#">李大钊</a></li>
+          <li id="liii2"><a href="#">我的python人生</a></li>
+          <li id="liii3"><a href="#">2021-5-21</a></li>
+          <li id="liii4"><a href="#">465156465</a></li>
+          <li id="liii5"><a href="#">98312654</a></li>
+        </ul>
+      </div>
+    </div>
+  </main>
+  <footer>
+    <div>
+      Design by Gary
+      <a href="#">个人博客</a>
+      <a href="#">备案673248932</a>
+    </div>
+  </footer>
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>跨域测试</title>
+</head>
+<script src="/static/js/jquery-1.11.3.js"></script>
+<body>
+<button id="btn">跨域请求</button>
+</body>
+<script>
+    // 1 定义一个预留函数
+    function print(data){
+        // console.log(data);
+        alert(data);
+    }
+    $(function(){
+        $('#btn').click(function(){
+            /*
+            //获取body元素，因为是复数，所以返回的是个列表，所以要加索引
+            var body=document.getElementsByTagName('body')[0];
+            // 创建script标签
+            var script=document.createElement('script');
+            // 设置标签属性
+            script.type='text/javascript'
+            // 设置标签的src属性
+            script.src='http://localhost:31415/cross_server?callback=print'
+            //将动态生成的script添加到body标签中
+            body.append(script);
+            */
+    /*
+        $.ajax({
+            url:'http://localhost:31415/cross_server',
+            type:'get',
+            dataType:'jsonp',//指定为跨域访问
+            jsonp:'callback',//定义了callback的参数名，以便获取callback传递过去的函数名
+            jsonpCallback:'print' //定义jsonp的回调函数名
+        });
+    */
+        $.ajax({
+            url:'http://localhost:31415/cross_server',
+            type:'get',
+            dataType:'jsonp',//指定为跨域访问
+            success: function(data){
+                alert(data);
+        }
+        });
+    })
+})
+</script>
+</html>

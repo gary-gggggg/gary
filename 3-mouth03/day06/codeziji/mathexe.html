@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    li{
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li><img src="/home/tarena/mouth03/day06/imgs/bk0-8.jpg" alt=""></li>
+    <li><img src="/home/tarena/mouth03/day06/imgs/bk1-8.jpg" alt=""></li>
+    <li><img src="/home/tarena/mouth03/day06/imgs/bk6-8.jpg" alt=""></li>
+    <li><img src="/home/tarena/mouth03/day06/imgs/gm5-6.jpg" alt=""></li>
+  </ul>
+  <script>
+    var im=document.getElementsByTagName('img');
+    var arr=[]; 
+    while(arr.length<=4){
+      var num=Math.random();
+      k=Math.floor(num*10)
+      if(arr.indexOf(k)!=-1){
+        continue;
+      }else{
+        arr.push(k);
+      }
+    }
+    console.log(arr)
+    for(var i=0;i<=3;i++){
+      im[i].src=`/home/tarena/mouth03/day06/imgs/bk${arr[i]}-8.jpg`
+    }
+  </script>
+</body>
+</html>

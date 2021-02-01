@@ -1,0 +1,12 @@
+2020年 11月 27日 星期五 09:42:51 CST
+总用量 24
+drwxr-xr-x 2 root root 4096 2月  21  2020 conf.d
+-rw------- 1 root root  317 2月  21  2020 debian.cnf
+-rwxr-xr-x 1 root root  120 1月  21  2020 debian-start
+lrwxrwxrwx 1 root root   24 2月  21  2020 my.cnf -> /etc/alternatives/my.cnf
+-rw-r--r-- 1 root root  839 8月   3  2016 my.cnf.fallback
+-rw-r--r-- 1 root root  682 1月  12  2018 mysql.cnf
+drwxr-xr-x 2 root root 4096 2月  21  2020 mysql.conf.d
+gary
+gary
+gary

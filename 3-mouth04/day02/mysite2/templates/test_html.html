@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>我giao</title>
+</head>
+<body>
+<p>你的名字:{{name | truncatechars:'5'}}...</p>
+<p>班级人数：{{count |add:'200'}}</p>
+<p>直辖市：{{city.1}}</p>
+<p>人数的分布：{{distribute.杭州}}</p>
+<p>代言人：{{p1.showData}}</p>
+<p>致辞：{{function1}}</p>
+<p>一段javascript:{{script|safe}}</p>
+
+
+<h3>标签的使用</h3>
+{% if count > 350 %}
+<p>这个班人很多</p>
+{% else %}
+<p>我们各个都很吊</p>
+{% endif %}
+
+<h3>天线宝宝</h3>
+{% for person in persons %}
+    <p>{{ forloop.counter }}. {{ person }}</p>
+{% empty %}
+    <p>empty</p>
+{% endfor %}
+</body>
+</html>

@@ -1,0 +1,315 @@
+/* 首页样式文件 */
+/* 初始化页面样式 */
+h1,h2,h3,p,body,ul{
+  padding: 0;
+  margin: 0;
+}
+ul{
+  list-style: none;/*去小圆点*/
+}
+a{
+  text-decoration: none;/*去下划线*/
+}
+img{
+  display: block;
+}
+body{
+  font: 16px monospace;
+}
+/*********************header******************/
+header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 80px;
+  background-color: #555;
+  z-index: 999;
+}
+nav{
+  /* 控制头部内容的位置 */
+  width: 1140px;
+  height: 80px;
+  /* border: 1px solid red; */
+  margin: 0 auto;
+  line-height: 80px;
+}
+
+/* logo  h1 */
+/* 字体大小26px  字体颜色#c1edf2  让h1浮动 */
+.logo{
+  font-size: 26px;
+  float: left;
+}
+.logo>a{
+  color: #c1edf2;
+}
+/* 15:57～16:15 */
+/* 导航菜单 ul */
+/* li水平排列 字体颜色#e5f2f2 鼠标移入时字体变成白色 */
+/* 调整导航菜单和logo之间的距离  调整li之间的距离 */
+nav>ul{
+  float: left;
+  margin-left: 80px;
+}
+nav>ul>li{
+  float: left;
+  padding: 0 20px;
+}
+nav>ul>li>a{
+  color: #e5f2f2;
+}
+nav>ul>li>a:hover{
+  color: #fff;
+}
+/* 登陆注册 */
+#login,#register{
+  float: right;
+  color: #e5f2f2;
+}
+#login{
+  margin-right: 50px;
+}
+
+/******************main**********************/
+main{
+  width: 1140px;
+  /* height: 600px;
+  border: 5px solid red; */
+  margin: 100px auto 0;
+}
+/* 轮播图 */
+.banner{
+  width: 66%;
+  float: left;
+}
+.fader{
+  /* 为后代元素绝对定位做参照物 */
+  position: relative;
+}
+
+.slide img{
+  width: 100%;
+  height: 100%;
+}
+/* 休息+练习 17:03~17:25 */
+/* 图片上的文字  绝对定位 定位.fader下方  距离下方12% */
+/* 字体大小26px 字体颜色白色 半透明黑色背景 文字距离左侧边框40px*/
+.imginfo{
+  position: absolute;
+  bottom: 12%;
+  left: 0;
+  right: 0;
+  font-size: 26px;
+  color: #fff;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding-left: 40px;
+}
+
+/* 轮播图左右箭头 */
+/* 绝对定位 定位到相对于fader垂直居中的位置 */
+/*白色 宽50px 高80px 字体大小80px 设置字体垂直居中 */
+/* prev左侧显示  next右侧显示 */
+.prev,.next{
+  position: absolute;
+  top: 50%;
+  width: 50px;
+  height: 80px;
+  font-size: 80px;
+  color: #fff;
+  line-height: 80px;
+  margin-top: -40px;
+  /* 隐藏 */
+  opacity: 0;
+  transition: all 0.3s;
+}
+.next{
+  right: 50px;
+}
+.prev{
+  left: 50px;
+}
+
+.fader:hover .prev{
+  opacity: 0.8;
+  left: 0;
+}
+.fader:hover .next{
+  opacity: 0.8;
+  right: 0;
+}
+
+/* 轮播图页标 */
+.pager_list{
+  /* border: 5px solid red;  */
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 40px;
+  text-align: center;
+  line-height: 40px;
+}
+.pager_list>li{
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  background-color: #fff;
+  opacity: 0.7;
+  border-radius: 50%;
+}
+/****************toppic*****************/
+.toppic{
+  width: 32%;
+  float: right;
+  /* border: 5px solid red; */
+}
+
+.toppic li{
+  position: relative;
+  background-color: #000;
+}
+
+.toppic li img{
+  width: 100%;
+  height: 218px;
+  opacity: 0.7;
+  transition: opacity 0.5s;
+}
+.toppic li:hover img{
+  opacity: 1;
+}
+/* 休息+练习 09:46~10:06 */
+/* 图片中的文字 */
+/* div span 参照li做绝对定位 div定位在li下方 span定位在li左上角 距离左上角20px */
+/* div宽度占100% 半透明的深黑背景  白色字体 */
+/* span 半透明深黑色背景 白色字体 字体水平居中垂直居中 字体大小14px 边框圆角3px */
+.toppic li div{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  padding: 10px 20px;
+}
+.toppic li span{
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #fff;
+  font-size: 14px;
+  width: 70px;
+  height: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 3px;
+}
+/* :last-child过滤选择器  找最后一个子元素li */
+.toppic li:last-child{
+  margin-top: 21px;
+}
+
+/***************blogs******************/
+/* 10:52~11:10 */
+/* .banner左浮动 .toppic右浮动  上半部分的内容全部浮动后高度默认为0  下半部分内容会进行补位 */
+/* 将blogsbox 调整到下方显示 并且距离banner和toppic 20px */
+.clear{
+  clear: both
+}
+/* 保存全部博客 */
+.blogsbox{
+  /* border: 5px solid red; */
+  /* height: 300px; */
+  margin-top: 20px;
+}
+body{
+  background-color: #f3f3d1;
+}
+/* 每一条博客 */
+.blogs{
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  /* 解决子元素浮动后没高度的问题 */
+  overflow: hidden;
+}
+
+/* 博客标题  字体大小20px  */
+/* 字体颜色 #555   鼠标移入时 字体颜色#337ab7 */
+.blogtitle{
+  font-size: 20px;
+}
+.blogtitle a{
+  color: #555;
+}
+.blogtitle a:hover{
+  color: #337ab7;
+}
+/* 博客图片 */
+.blogpic{
+  width: 30%;
+  height: 170px;
+  float: left;
+  margin: 10px 20px 0 0;
+  /* 图片缩放时可能会溢出div的大小 溢出部分隐藏 */
+  overflow: hidden;
+}
+.blogpic img{
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s;
+}
+/* 鼠标移入时缩放图片 */
+.blogpic img:hover{
+  transform: scale(1.1)
+}
+
+/* 博客文本 */
+.blogtext{
+  font-size: 14px;
+  color: #566573;
+  margin-top: 20px;
+}
+/* 用户列表 */
+.blogs li{
+  line-height: 18px;
+  padding-left: 18px;
+  float: left;
+  margin: 30px 15px 0 0;
+  background-image: url('../images/auicon.jpg');
+  background-repeat: no-repeat;
+}
+.blogs li a{
+  color: #748594;
+}
+.blogs li a:hover{
+  color: #000;
+}
+/* 14:54~15:10 */
+/* 分别调整每一个li背景图片显示位置 */
+.lmname{
+  background-position-y: -25px;
+}
+.timer{
+  background-position-y: -45px;
+}
+.view{
+  background-position-y: -66px;
+}
+.like{
+  background-position-y: -87px;
+}
+/*************footer***************/
+footer{
+  width: 100%;
+  background-color: #555;
+  color: #a5a4a4;
+  text-align: center;
+  padding: 20px 0;
+}
+footer a{
+  color: #a5a4a4;
+}
+footer a:hover{
+  color: #c1edf2;
+}

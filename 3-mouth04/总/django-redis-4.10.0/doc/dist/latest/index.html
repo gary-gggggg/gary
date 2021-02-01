@@ -1,0 +1,1114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]-->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Asciidoctor 1.5.8">
+<meta name="author" content="Andrey Antukh, &lt;niwi@niwi.be&gt;">
+<title>django-redis documentation</title>
+<style>
+.listingblock .pygments .hll { background-color: #ffffcc }
+.listingblock .pygments, .listingblock .pygments code { background: #f0f0f0; }
+.listingblock .pygments .tok-c { color: #60a0b0; font-style: italic } /* Comment */
+.listingblock .pygments .tok-err { border: 1px solid #FF0000 } /* Error */
+.listingblock .pygments .tok-k { color: #007020; font-weight: bold } /* Keyword */
+.listingblock .pygments .tok-o { color: #666666 } /* Operator */
+.listingblock .pygments .tok-ch { color: #60a0b0; font-style: italic } /* Comment.Hashbang */
+.listingblock .pygments .tok-cm { color: #60a0b0; font-style: italic } /* Comment.Multiline */
+.listingblock .pygments .tok-cp { color: #007020 } /* Comment.Preproc */
+.listingblock .pygments .tok-cpf { color: #60a0b0; font-style: italic } /* Comment.PreprocFile */
+.listingblock .pygments .tok-c1 { color: #60a0b0; font-style: italic } /* Comment.Single */
+.listingblock .pygments .tok-cs { color: #60a0b0; background-color: #fff0f0 } /* Comment.Special */
+.listingblock .pygments .tok-gd { color: #A00000 } /* Generic.Deleted */
+.listingblock .pygments .tok-ge { font-style: italic } /* Generic.Emph */
+.listingblock .pygments .tok-gr { color: #FF0000 } /* Generic.Error */
+.listingblock .pygments .tok-gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.listingblock .pygments .tok-gi { color: #00A000 } /* Generic.Inserted */
+.listingblock .pygments .tok-go { color: #888888 } /* Generic.Output */
+.listingblock .pygments .tok-gp { color: #c65d09; font-weight: bold } /* Generic.Prompt */
+.listingblock .pygments .tok-gs { font-weight: bold } /* Generic.Strong */
+.listingblock .pygments .tok-gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.listingblock .pygments .tok-gt { color: #0044DD } /* Generic.Traceback */
+.listingblock .pygments .tok-kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.listingblock .pygments .tok-kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.listingblock .pygments .tok-kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.listingblock .pygments .tok-kp { color: #007020 } /* Keyword.Pseudo */
+.listingblock .pygments .tok-kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.listingblock .pygments .tok-kt { color: #902000 } /* Keyword.Type */
+.listingblock .pygments .tok-m { color: #40a070 } /* Literal.Number */
+.listingblock .pygments .tok-s { color: #4070a0 } /* Literal.String */
+.listingblock .pygments .tok-na { color: #4070a0 } /* Name.Attribute */
+.listingblock .pygments .tok-nb { color: #007020 } /* Name.Builtin */
+.listingblock .pygments .tok-nc { color: #0e84b5; font-weight: bold } /* Name.Class */
+.listingblock .pygments .tok-no { color: #60add5 } /* Name.Constant */
+.listingblock .pygments .tok-nd { color: #555555; font-weight: bold } /* Name.Decorator */
+.listingblock .pygments .tok-ni { color: #d55537; font-weight: bold } /* Name.Entity */
+.listingblock .pygments .tok-ne { color: #007020 } /* Name.Exception */
+.listingblock .pygments .tok-nf { color: #06287e } /* Name.Function */
+.listingblock .pygments .tok-nl { color: #002070; font-weight: bold } /* Name.Label */
+.listingblock .pygments .tok-nn { color: #0e84b5; font-weight: bold } /* Name.Namespace */
+.listingblock .pygments .tok-nt { color: #062873; font-weight: bold } /* Name.Tag */
+.listingblock .pygments .tok-nv { color: #bb60d5 } /* Name.Variable */
+.listingblock .pygments .tok-ow { color: #007020; font-weight: bold } /* Operator.Word */
+.listingblock .pygments .tok-w { color: #bbbbbb } /* Text.Whitespace */
+.listingblock .pygments .tok-mb { color: #40a070 } /* Literal.Number.Bin */
+.listingblock .pygments .tok-mf { color: #40a070 } /* Literal.Number.Float */
+.listingblock .pygments .tok-mh { color: #40a070 } /* Literal.Number.Hex */
+.listingblock .pygments .tok-mi { color: #40a070 } /* Literal.Number.Integer */
+.listingblock .pygments .tok-mo { color: #40a070 } /* Literal.Number.Oct */
+.listingblock .pygments .tok-sa { color: #4070a0 } /* Literal.String.Affix */
+.listingblock .pygments .tok-sb { color: #4070a0 } /* Literal.String.Backtick */
+.listingblock .pygments .tok-sc { color: #4070a0 } /* Literal.String.Char */
+.listingblock .pygments .tok-dl { color: #4070a0 } /* Literal.String.Delimiter */
+.listingblock .pygments .tok-sd { color: #4070a0; font-style: italic } /* Literal.String.Doc */
+.listingblock .pygments .tok-s2 { color: #4070a0 } /* Literal.String.Double */
+.listingblock .pygments .tok-se { color: #4070a0; font-weight: bold } /* Literal.String.Escape */
+.listingblock .pygments .tok-sh { color: #4070a0 } /* Literal.String.Heredoc */
+.listingblock .pygments .tok-si { color: #70a0d0; font-style: italic } /* Literal.String.Interpol */
+.listingblock .pygments .tok-sx { color: #c65d09 } /* Literal.String.Other */
+.listingblock .pygments .tok-sr { color: #235388 } /* Literal.String.Regex */
+.listingblock .pygments .tok-s1 { color: #4070a0 } /* Literal.String.Single */
+.listingblock .pygments .tok-ss { color: #517918 } /* Literal.String.Symbol */
+.listingblock .pygments .tok-bp { color: #007020 } /* Name.Builtin.Pseudo */
+.listingblock .pygments .tok-fm { color: #06287e } /* Name.Function.Magic */
+.listingblock .pygments .tok-vc { color: #bb60d5 } /* Name.Variable.Class */
+.listingblock .pygments .tok-vg { color: #bb60d5 } /* Name.Variable.Global */
+.listingblock .pygments .tok-vi { color: #bb60d5 } /* Name.Variable.Instance */
+.listingblock .pygments .tok-vm { color: #bb60d5 } /* Name.Variable.Magic */
+.listingblock .pygments .tok-il { color: #40a070 } /* Literal.Number.Integer.Long */
+</style>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,300italic,400,400italic,600,600italic|Liberation+Mono:400|Roboto+Slab:400,700"/>
+<link rel="stylesheet" href="https://www.niwi.nz/_assets/asciidoctor-styles/simple-red-titles/stylesheet.css"/>
+</head>
+<body class="article toc2 toc-left">
+<div id="header">
+<h1>django-redis documentation</h1>
+<div class="details">
+<span id="author" class="author">Andrey Antukh, &lt;niwi@niwi.be&gt;</span><br>
+<span id="revdate">4.10.0</span>
+</div>
+<div id="toc" class="toc2">
+<div id="toctitle">Table of Contents</div>
+<ul class="sectlevel1">
+<li><a href="#_introduction">1. Introduction</a>
+<ul class="sectlevel2">
+<li><a href="#_why_use_django_redis">1.1. Why use django-redis?</a></li>
+<li><a href="#_supported_django_redis_versions">1.2. Supported django-redis versions</a></li>
+<li><a href="#_how_version_number_is_handled">1.3. How version number is handled</a></li>
+<li><a href="#_requirements">1.4. Requirements</a></li>
+</ul>
+</li>
+<li><a href="#_user_guide">2. User guide</a>
+<ul class="sectlevel2">
+<li><a href="#_installation">2.1. Installation</a></li>
+<li><a href="#_configure_as_cache_backend">2.2. Configure as cache backend</a></li>
+<li><a href="#_configure_as_session_backend">2.3. Configure as session backend</a></li>
+<li><a href="#_testing_with_django_redis">2.4. Testing with django-redis</a></li>
+</ul>
+</li>
+<li><a href="#_advanced_usage">3. Advanced usage</a>
+<ul class="sectlevel2">
+<li><a href="#_pickle_version">3.1. Pickle version</a></li>
+<li><a href="#_socket_timeout">3.2. Socket timeout</a></li>
+<li><a href="#_compression_support">3.3. Compression support</a></li>
+<li><a href="#_memcached_exceptions_behavior">3.4. Memcached exceptions behavior</a></li>
+<li><a href="#_log_ignored_exceptions">3.5. Log Ignored Exceptions</a></li>
+<li><a href="#_infinite_timeout">3.6. Infinite timeout</a></li>
+<li><a href="#_get_ttl_time_to_live_from_key">3.7. Get ttl (time-to-live) from key</a></li>
+<li><a href="#_expire_persist">3.8. Expire &amp; Persist</a></li>
+<li><a href="#_locks">3.9. Locks</a></li>
+<li><a href="#_scan_delete_keys_in_bulk">3.10. Scan &amp; Delete keys in bulk</a></li>
+<li><a href="#_redis_native_commands">3.11. Redis native commands</a></li>
+<li><a href="#_raw_client_access">3.12. Raw client access</a></li>
+<li><a href="#_connection_pools">3.13. Connection pools</a></li>
+<li><a href="#_pluggable_parsers">3.14. Pluggable parsers</a></li>
+<li><a href="#_pluggable_clients">3.15. Pluggable clients</a></li>
+<li><a href="#_pluggable_serializer">3.16. Pluggable serializer</a></li>
+<li><a href="#_pluggable_redis_client">3.17. Pluggable redis client</a></li>
+</ul>
+</li>
+<li><a href="#license">4. License</a></li>
+</ul>
+</div>
+</div>
+<div id="content">
+<div class="sect1">
+<h2 id="_introduction">1. Introduction</h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p><em>django-redis</em> is a <a href="#license">BSD Licensed</a>, full featured Redis cache/session backend for Django.</p>
+</div>
+<div class="sect2">
+<h3 id="_why_use_django_redis">1.1. Why use django-redis?</h3>
+<div class="paragraph">
+<p>Because:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>In active development.</p>
+</li>
+<li>
+<p>Uses native redis-py url notation connection strings.</p>
+</li>
+<li>
+<p>Pluggable clients.</p>
+</li>
+<li>
+<p>Pluggable parsers.</p>
+</li>
+<li>
+<p>Pluggable serializers.</p>
+</li>
+<li>
+<p>Master-Slave support in the default client.</p>
+</li>
+<li>
+<p>Complete battery of tests.</p>
+</li>
+<li>
+<p>Used in production in several projects as cache and session storage.</p>
+</li>
+<li>
+<p>Supports infinite timeouts.</p>
+</li>
+<li>
+<p>Facilities for raw access to Redis client/connection pool.</p>
+</li>
+<li>
+<p>Highly configurable (can emulate memcached exception behavior, for example).</p>
+</li>
+<li>
+<p>Unix sockets supported by default.</p>
+</li>
+<li>
+<p>With support for python 2.7, 3.4, 3.5 and 3.6</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_supported_django_redis_versions">1.2. Supported django-redis versions</h3>
+<div class="ulist">
+<ul>
+<li>
+<p>Supported stable version: <strong>4.10.0</strong></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_how_version_number_is_handled">1.3. How version number is handled</h3>
+<div class="paragraph">
+<p>Versions like <em>4.6</em>, <em>4.7</em>, &#8230;&#8203; are considered major releases
+and can contain some backward incompatibilities. For more information
+is very recommended see the changelog before update.</p>
+</div>
+<div class="paragraph">
+<p>Versions like <em>4.7.0</em>, <em>4.7.1</em>, &#8230;&#8203; are considered minor or bug
+fix releases and are should contain only bug fixes. No new features.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_requirements">1.4. Requirements</h3>
+<div class="sect3">
+<h4 id="_django_version_support">1.4.1. Django version support</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>django-redis</strong> supports Django 1.11+.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_redis_server_support">1.4.2. Redis Server Support</h4>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>django-redis 4.x.y</strong> will maintain support for redis-server 2.8.x and upper.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_other_requirements">1.4.3. Other requirements</h4>
+<div class="paragraph">
+<p>All supported versions of <strong>django-redis</strong> depends on <code>redis-py &gt;= 2.10.0</code>.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_user_guide">2. User guide</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_installation">2.1. Installation</h3>
+<div class="paragraph">
+<p>The simplest way to use <strong>django-redis</strong> in your project is to install it with <strong>pip</strong>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="text"><span></span>pip install django-redis</code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_as_cache_backend">2.2. Configure as cache backend</h3>
+<div class="paragraph">
+<p>To start using <strong>django-redis</strong>, you should change your Django cache settings to something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;CLIENT_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.client.DefaultClient&quot;</span><span class="tok-p">,</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>django-redis uses the redis-py native url notation for connection strings,
+it allows better interoperability and has a connection string in more "standard" way.</p>
+</div>
+<div class="listingblock">
+<div class="title">This is a examples of url format</div>
+<div class="content">
+<pre>redis://[:password]@localhost:6379/0
+rediss://[:password]@localhost:6379/0
+unix://[:password]@/path/to/socket.sock?db=0</pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Three URL schemes are supported:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>redis://</code>: creates a normal TCP socket connection</p>
+</li>
+<li>
+<p><code>rediss://</code>: creates a SSL wrapped TCP socket connection</p>
+</li>
+<li>
+<p><code>unix://</code> creates a Unix Domain Socket connection</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>There are several ways to specify a database number:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>A <code>db</code> querystring option, e.g. redis://localhost?db=0</p>
+</li>
+<li>
+<p>If using the redis:// scheme, the path argument of the url, e.g. <code>redis://localhost/0</code></p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>In some circumstances the password you should use to connect redis
+is not URL-safe, in this case you can escape it or just use the
+convenience option in <code>OPTIONS</code> dict:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;CLIENT_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.client.DefaultClient&quot;</span><span class="tok-p">,</span>
+            <span class="tok-s2">&quot;PASSWORD&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;mysecret&quot;</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Take care, that this option does not overwrites the password in the uri, so if you
+have set the password in the uri, this settings will be ignored.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_configure_as_session_backend">2.3. Configure as session backend</h3>
+<div class="paragraph">
+<p>Django can by default use any cache backend as session backend and you benefit from that by using
+<strong>django-redis</strong> as backend for session storage without installing any additional backends:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">SESSION_ENGINE</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;django.contrib.sessions.backends.cache&quot;</span>
+<span class="tok-n">SESSION_CACHE_ALIAS</span> <span class="tok-o">=</span> <span class="tok-s2">&quot;default&quot;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_testing_with_django_redis">2.4. Testing with django-redis</h3>
+<div class="paragraph">
+<p><code>django-redis</code> supports customizing the underlying Redis client (see
+<a href="#_pluggable_redis_client">Pluggable redis client</a>). This can be used for testing purposes, e.g., by
+replacing the default client with <code>mockredis</code>
+(<a href="https://github.com/locationlabs/mockredis" class="bare">https://github.com/locationlabs/mockredis</a>). Doing so allows you to run your
+integration tests without depending on a real Redis server.</p>
+</div>
+<div class="paragraph">
+<p>In case you want to flush all data from the cache after a test, add the
+following lines to your <code>TestCase</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-k">def</span> <span class="tok-nf">tearDown</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">):</span>
+    <span class="tok-kn">from</span> <span class="tok-nn">django_redis</span> <span class="tok-kn">import</span> <span class="tok-n">get_redis_connection</span>
+    <span class="tok-n">get_redis_connection</span><span class="tok-p">(</span><span class="tok-s2">&quot;default&quot;</span><span class="tok-p">)</span><span class="tok-o">.</span><span class="tok-n">flushall</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="_advanced_usage">3. Advanced usage</h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="_pickle_version">3.1. Pickle version</h3>
+<div class="paragraph">
+<p>For almost all values, <strong>django-redis</strong> uses pickle to serialize objects.</p>
+</div>
+<div class="paragraph">
+<p>The latest available version of pickle is used by default. If you want set a concrete version, you
+can do it, using <code>PICKLE_VERSION</code> option:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-c1"># ...</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;PICKLE_VERSION&quot;</span><span class="tok-p">:</span> <span class="tok-o">-</span><span class="tok-mi">1</span>  <span class="tok-c1"># Use the latest protocol version</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_socket_timeout">3.2. Socket timeout</h3>
+<div class="paragraph">
+<p>Socket timeout can be set using <code>SOCKET_TIMEOUT</code> and <code>SOCKET_CONNECT_TIMEOUT</code>
+options:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-c1"># ...</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;SOCKET_CONNECT_TIMEOUT&quot;</span><span class="tok-p">:</span> <span class="tok-mi">5</span><span class="tok-p">,</span>  <span class="tok-c1"># in seconds</span>
+            <span class="tok-s2">&quot;SOCKET_TIMEOUT&quot;</span><span class="tok-p">:</span> <span class="tok-mi">5</span><span class="tok-p">,</span>  <span class="tok-c1"># in seconds</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><code>SOCKET_CONNECT_TIMEOUT</code> is the timeout for the connection to be established and
+<code>SOCKET_TIMEOUT</code> is the timeout for read and write operations after the connection
+is established.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_compression_support">3.3. Compression support</h3>
+<div class="paragraph">
+<p><em>django_redis</em> comes with compression support out of the box, but is deactivated by default.
+You can activate it setting up a concrete backend:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-c1"># ...</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;COMPRESSOR&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.compressors.zlib.ZlibCompressor&quot;</span><span class="tok-p">,</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Let see an example, of how make it work with <strong>lzma</strong> compression format:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-kn">import</span> <span class="tok-nn">lzma</span>
+
+<span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-c1"># ...</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;COMPRESSOR&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.compressors.lzma.LzmaCompressor&quot;</span><span class="tok-p">,</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p><strong>Lz4</strong> compression support (requires the lz4 library):</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-kn">import</span> <span class="tok-nn">lz4</span>
+
+<span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-c1"># ...</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;COMPRESSOR&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.compressors.lz4.Lz4Compressor&quot;</span><span class="tok-p">,</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_memcached_exceptions_behavior">3.4. Memcached exceptions behavior</h3>
+<div class="paragraph">
+<p>In some situations, when Redis is only used for cache, you do not want exceptions when Redis is down.
+This is default behavior in the memcached backend and it can be emulated in <strong>django-redis</strong>.</p>
+</div>
+<div class="paragraph">
+<p>For setup memcached like behaviour (ignore connection exceptions), you should
+set <code>IGNORE_EXCEPTIONS</code> settings on your cache configuration:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-c1"># ...</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;IGNORE_EXCEPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-bp">True</span><span class="tok-p">,</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Also, you can apply the same settings to all configured caches, you can set the global flag in
+your settings:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">DJANGO_REDIS_IGNORE_EXCEPTIONS</span> <span class="tok-o">=</span> <span class="tok-bp">True</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_log_ignored_exceptions">3.5. Log Ignored Exceptions</h3>
+<div class="paragraph">
+<p>When ignoring exceptions with <code>IGNORE_EXCEPTIONS</code> or <code>DJANGO_REDIS_IGNORE_EXCEPTIONS</code>,
+you may optionally log exceptions using the global variable <code>DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS</code>
+in your settings file.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS</span> <span class="tok-o">=</span> <span class="tok-bp">True</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>If you wish to specify the logger in which the exceptions are output, simply set the global
+variable <code>DJANGO_REDIS_LOGGER</code> to the string name and/or path of the desired logger. This will
+default to <code>__name__</code> if no logger is specified and <code>DJANGO_REDIS_LOG_IGNORED_EXCEPTIONS</code> is <code>True</code></p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">DJANGO_REDIS_LOGGER</span> <span class="tok-o">=</span> <span class="tok-s1">&#39;some.specified.logger&#39;</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_infinite_timeout">3.6. Infinite timeout</h3>
+<div class="paragraph">
+<p><strong>django-redis</strong> comes with infinite timeouts support out of the box. And it behaves in same way
+as django backend contract specifies:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>timeout=0</code> expires the value immediately.</p>
+</li>
+<li>
+<p><code>timeout=None</code> infinite timeout</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;key&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;value&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-bp">None</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_get_ttl_time_to_live_from_key">3.7. Get ttl (time-to-live) from key</h3>
+<div class="paragraph">
+<p>With redis, you can access to ttl of any stored key, for it, django-redis exposes <code>ttl</code> function.</p>
+</div>
+<div class="paragraph">
+<p>It returns:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>0 if key does not exists (or already expired).</p>
+</li>
+<li>
+<p>None for keys that exists but does not have any expiration.</p>
+</li>
+<li>
+<p>ttl value for any volatile key (any key that has expiration).</p>
+</li>
+</ul>
+</div>
+<div class="listingblock">
+<div class="title">Simple search keys by pattern</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;value&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-mi">25</span><span class="tok-p">)</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">ttl</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">25</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">ttl</span><span class="tok-p">(</span><span class="tok-s2">&quot;not-existent&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">0</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_expire_persist">3.8. Expire &amp; Persist</h3>
+<div class="paragraph">
+<p>Additionally to the simple ttl query, you can send persist a concrete key or specify
+a new expiration timeout using the <code>persist</code> and <code>expire</code> methods:</p>
+</div>
+<div class="listingblock">
+<div class="title">Example using <code>persist</code> method</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;bar&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-mi">22</span><span class="tok-p">)</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">ttl</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">22</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">persist</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">)</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">ttl</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">None</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title">Example using expire method</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;bar&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-mi">22</span><span class="tok-p">)</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">expire</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">,</span> <span class="tok-n">timeout</span><span class="tok-o">=</span><span class="tok-mi">5</span><span class="tok-p">)</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">ttl</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">5</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_locks">3.9. Locks</h3>
+<div class="paragraph">
+<p>It also supports the redis ability to create redis distributed named locks. The Lock
+interface is identical to the <code>threading.Lock</code> so you can use it as replacement.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example allocating a lock using python context managers facilities.</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-k">with</span> <span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">lock</span><span class="tok-p">(</span><span class="tok-s2">&quot;somekey&quot;</span><span class="tok-p">):</span>
+    <span class="tok-n">do_some_thing</span><span class="tok-p">()</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_scan_delete_keys_in_bulk">3.10. Scan &amp; Delete keys in bulk</h3>
+<div class="paragraph">
+<p><strong>django-redis</strong> comes with some additional methods that help with searching or deleting keys
+using glob patterns.</p>
+</div>
+<div class="listingblock">
+<div class="title">Simple search keys by pattern</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">keys</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo_*&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">[&quot;foo_1&quot;, &quot;foo_2&quot;]</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>A simple search like this will return all matched values. In databases with a large number of keys
+this isn&#8217;t suitable method. Instead, you can use the <code>iter_keys</code> function that works like the <code>keys</code>
+function but uses redis&gt;=2.8 server side cursors. Calling <code>iter_keys</code> will return a generator that
+you can then iterate over efficiently.</p>
+</div>
+<div class="listingblock">
+<div class="title">Search using server side cursors</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">iter_keys</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo_*&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">&lt;generator object algo at 0x7ffa9c2713a8&gt;</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-nb">next</span><span class="tok-p">(</span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">iter_keys</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo_*&quot;</span><span class="tok-p">))</span>
+<span class="tok-go">&quot;foo_1&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>For deleting keys, you should use <code>delete_pattern</code> which has the same glob pattern syntax
+as the <code>keys</code> function and returns the number of deleted keys.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example use of delete_pattern</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">delete_pattern</span><span class="tok-p">(</span><span class="tok-s2">&quot;foo_*&quot;</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_redis_native_commands">3.11. Redis native commands</h3>
+<div class="paragraph">
+<p><strong>django-redis</strong> has limited support for some Redis atomic operations, such as the commands <code>SETNX</code>
+ and <code>INCR</code>.</p>
+</div>
+<div class="paragraph">
+<p>You can use the <code>SETNX</code> command through the backend <code>set()</code> method with the <code>nx</code> parameter:</p>
+</div>
+<div class="listingblock">
+<div class="title">Example:</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django.core.cache</span> <span class="tok-kn">import</span> <span class="tok-n">cache</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;key&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;value1&quot;</span><span class="tok-p">,</span> <span class="tok-n">nx</span><span class="tok-o">=</span><span class="tok-bp">True</span><span class="tok-p">)</span>
+<span class="tok-go">True</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">set</span><span class="tok-p">(</span><span class="tok-s2">&quot;key&quot;</span><span class="tok-p">,</span> <span class="tok-s2">&quot;value2&quot;</span><span class="tok-p">,</span> <span class="tok-n">nx</span><span class="tok-o">=</span><span class="tok-bp">True</span><span class="tok-p">)</span>
+<span class="tok-go">False</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">cache</span><span class="tok-o">.</span><span class="tok-n">get</span><span class="tok-p">(</span><span class="tok-s2">&quot;key&quot;</span><span class="tok-p">)</span>
+<span class="tok-go">&quot;value1&quot;</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Also, <code>incr</code> and <code>decr</code> methods uses redis atomic operations when value that contains a key is suitable
+for it.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_raw_client_access">3.12. Raw client access</h3>
+<div class="paragraph">
+<p>In some situations your application requires access to a raw Redis client to use some advanced
+features that aren&#8217;t exposed by the Django cache interface. To avoid storing another setting for
+creating a raw connection, <strong>django-redis</strong> exposes functions with which you can obtain a raw client
+reusing the cache connection string: <code>get_redis_connection(alias)</code>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="pycon"><span></span><span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-kn">from</span> <span class="tok-nn">django_redis</span> <span class="tok-kn">import</span> <span class="tok-n">get_redis_connection</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">con</span> <span class="tok-o">=</span> <span class="tok-n">get_redis_connection</span><span class="tok-p">(</span><span class="tok-s2">&quot;default&quot;</span><span class="tok-p">)</span>
+<span class="tok-gp">&gt;&gt;&gt; </span><span class="tok-n">con</span>
+<span class="tok-go">&lt;redis.client.StrictRedis object at 0x2dc4510&gt;</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Not all pluggable clients support this feature.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_connection_pools">3.13. Connection pools</h3>
+<div class="paragraph">
+<p>Behind the scenes, <strong>django-redis</strong> uses the underlying <strong>redis-py</strong> connection pool implementation,
+and exposes a simple way to configure it. Alternatively, you can directly customize a
+connection/connection pool creation for a backend.</p>
+</div>
+<div class="paragraph">
+<p>The default <strong>redis-py</strong> behavior is to not close connections, recycling them when possible.</p>
+</div>
+<div class="sect3">
+<h4 id="_configure_default_connection_pool">3.13.1. Configure default connection pool</h4>
+<div class="paragraph">
+<p>The default connection pool is simple. For example, you can customize the maximum number of connections
+in the pool by setting <code>CONNECTION_POOL_KWARGS</code> in the <code>CACHES</code> setting:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
+        <span class="tok-c1"># ...</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;CONNECTION_POOL_KWARGS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span><span class="tok-s2">&quot;max_connections&quot;</span><span class="tok-p">:</span> <span class="tok-mi">100</span><span class="tok-p">}</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>You can verify how many connections the pool has opened with the following snippet:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-kn">from</span> <span class="tok-nn">django_redis</span> <span class="tok-kn">import</span> <span class="tok-n">get_redis_connection</span>
+
+<span class="tok-n">r</span> <span class="tok-o">=</span> <span class="tok-n">get_redis_connection</span><span class="tok-p">(</span><span class="tok-s2">&quot;default&quot;</span><span class="tok-p">)</span>  <span class="tok-c1"># Use the name you have defined for Redis in settings.CACHES</span>
+<span class="tok-n">connection_pool</span> <span class="tok-o">=</span> <span class="tok-n">r</span><span class="tok-o">.</span><span class="tok-n">connection_pool</span>
+<span class="tok-k">print</span><span class="tok-p">(</span><span class="tok-s2">&quot;Created connections so far: </span><span class="tok-si">%d</span><span class="tok-s2">&quot;</span> <span class="tok-o">%</span> <span class="tok-n">connection_pool</span><span class="tok-o">.</span><span class="tok-n">_created_connections</span><span class="tok-p">)</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>Since the default connection pool passes all keyword arguments it doesn&#8217;t use to its connections, you can also customize the connections that the pool makes by adding those options to <code>CONNECTION_POOL_KWARGS</code>:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-c1"># ...</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;CONNECTION_POOL_KWARGS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span><span class="tok-s2">&quot;max_connections&quot;</span><span class="tok-p">:</span> <span class="tok-mi">100</span><span class="tok-p">,</span> <span class="tok-s2">&quot;retry_on_timeout&quot;</span><span class="tok-p">:</span> <span class="tok-bp">True</span><span class="tok-p">}</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_use_your_own_connection_pool_subclass">3.13.2. Use your own connection pool subclass</h4>
+<div class="paragraph">
+<p>Sometimes you want to use your own subclass of the connection pool. This is possible with
+<strong>django-redis</strong> using the <code>CONNECTION_POOL_CLASS</code> parameter in the backend options.</p>
+</div>
+<div class="listingblock">
+<div class="title"><em>myproj/mypool.py</em></div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-kn">from</span> <span class="tok-nn">redis.connection</span> <span class="tok-kn">import</span> <span class="tok-n">ConnectionPool</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">MyOwnPool</span><span class="tok-p">(</span><span class="tok-n">ConnectionPool</span><span class="tok-p">):</span>
+    <span class="tok-c1"># Just doing nothing, only for example purpose</span>
+    <span class="tok-k">pass</span></code></pre>
+</div>
+</div>
+<div class="listingblock">
+<div class="title"><em>settings.py</em></div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-c1"># Omitting all backend declaration boilerplate code.</span>
+
+<span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;CONNECTION_POOL_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;myproj.mypool.MyOwnPool&quot;</span><span class="tok-p">,</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_customize_connection_factory">3.13.3. Customize connection factory</h4>
+<div class="paragraph">
+<p>If none of the previous methods satisfies you, you can get in the middle of the
+<strong>django-redis</strong> connection factory process and customize or completely rewrite it.</p>
+</div>
+<div class="paragraph">
+<p>By default, <strong>django-redis</strong> creates connections through the <code>django_redis.pool.ConnectionFactory</code>
+class that is specified in the global Django setting <code>DJANGO_REDIS_CONNECTION_FACTORY</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Partial interface of <code>ConnectionFactory</code> class</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-c1"># Note: Using Python 3 notation for code documentation ;)</span>
+
+<span class="tok-k">class</span> <span class="tok-nc">ConnectionFactory</span><span class="tok-p">(</span><span class="tok-nb">object</span><span class="tok-p">):</span>
+    <span class="tok-k">def</span> <span class="tok-nf">get_connection_pool</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">params</span><span class="tok-p">:</span><span class="tok-nb">dict</span><span class="tok-p">):</span>
+        <span class="tok-c1"># Given connection parameters in the `params` argument,</span>
+        <span class="tok-c1"># return new connection pool.</span>
+        <span class="tok-c1"># It should be overwritten if you want do something</span>
+        <span class="tok-c1"># before/after creating the connection pool, or return your</span>
+        <span class="tok-c1"># own connection pool.</span>
+        <span class="tok-k">pass</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">get_connection</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">params</span><span class="tok-p">:</span><span class="tok-nb">dict</span><span class="tok-p">):</span>
+        <span class="tok-c1"># Given connection parameters in the `params` argument,</span>
+        <span class="tok-c1"># return a new connection.</span>
+        <span class="tok-c1"># It should be overwritten if you want to do something</span>
+        <span class="tok-c1"># before/after creating a new connection.</span>
+        <span class="tok-c1"># The default implementation uses `get_connection_pool`</span>
+        <span class="tok-c1"># to obtain a pool and create a new connection in the</span>
+        <span class="tok-c1"># newly obtained pool.</span>
+        <span class="tok-k">pass</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">get_or_create_connection_pool</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">params</span><span class="tok-p">:</span><span class="tok-nb">dict</span><span class="tok-p">):</span>
+        <span class="tok-c1"># This is a high layer on top of `get_connection_pool` for</span>
+        <span class="tok-c1"># implementing a cache of created connection pools.</span>
+        <span class="tok-c1"># It should be overwritten if you want change the default</span>
+        <span class="tok-c1"># behavior.</span>
+        <span class="tok-k">pass</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">make_connection_params</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">url</span><span class="tok-p">:</span><span class="tok-nb">str</span><span class="tok-p">)</span> <span class="tok-o">-&gt;</span> <span class="tok-nb">dict</span><span class="tok-p">:</span>
+        <span class="tok-c1"># The responsibility of this method is to convert basic connection</span>
+        <span class="tok-c1"># parameters and other settings to fully connection pool ready</span>
+        <span class="tok-c1"># connection parameters.</span>
+        <span class="tok-k">pass</span>
+
+    <span class="tok-k">def</span> <span class="tok-nf">connect</span><span class="tok-p">(</span><span class="tok-bp">self</span><span class="tok-p">,</span> <span class="tok-n">url</span><span class="tok-p">:</span><span class="tok-nb">str</span><span class="tok-p">):</span>
+        <span class="tok-c1"># This is really a public API and entry point for this</span>
+        <span class="tok-c1"># factory class. This encapsulates the main logic of creating</span>
+        <span class="tok-c1"># the previously mentioned `params` using `make_connection_params`</span>
+        <span class="tok-c1"># and creating a new connection using the `get_connection` method.</span>
+        <span class="tok-k">pass</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pluggable_parsers">3.14. Pluggable parsers</h3>
+<div class="paragraph">
+<p><strong>redis-py</strong> (the Python Redis client used by <strong>django-redis</strong>) comes with a pure Python Redis parser
+that works very well for most common task, but if you want some performance boost, you can use
+<strong>hiredis</strong>.</p>
+</div>
+<div class="paragraph">
+<p><strong>hiredis</strong> is a Redis client written in C and it has its own parser that can be used with <strong>django-redis</strong>.</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;PARSER_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis.connection.HiredisParser&quot;</span><span class="tok-p">,</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pluggable_clients">3.15. Pluggable clients</h3>
+<div class="paragraph">
+<p><em>django_redis</em> is designed for to be very flexible and very configurable. For it, it exposes a
+pluggable backends that make easy extend the default behavior, and it comes with few ones
+out the box.</p>
+</div>
+<div class="sect3">
+<h4 id="_default_client">3.15.1. Default client</h4>
+<div class="paragraph">
+<p>Almost all about the default client is explained, with one exception: the default client comes
+with master-slave support.</p>
+</div>
+<div class="paragraph">
+<p>To connect to master-slave redis setup, you should change the <code>LOCATION</code> to something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
+    <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
+    <span class="tok-s2">&quot;redis://127.0.0.1:6378/1&quot;</span><span class="tok-p">,</span>
+<span class="tok-p">]</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>The first connection string represents a master server and the rest to slave servers.</p>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Master-Slave setup is not heavily tested in production environments.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_shard_client">3.15.2. Shard client</h4>
+<div class="paragraph">
+<p>This pluggable client implements client-side sharding. It inherits almost all functionality from
+the default client. To use it, change your cache settings to something like this:</p>
+</div>
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-p">[</span>
+            <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
+            <span class="tok-s2">&quot;redis://127.0.0.1:6379/2&quot;</span><span class="tok-p">,</span>
+        <span class="tok-p">],</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;CLIENT_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.client.ShardClient&quot;</span><span class="tok-p">,</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="admonitionblock warning">
+<table>
+<tr>
+<td class="icon">
+<div class="title">Warning</div>
+</td>
+<td class="content">
+Shard client is still experimental, so be careful when using it in production environments.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect3">
+<h4 id="_herd_client">3.15.3. Herd client</h4>
+<div class="paragraph">
+<p>This pluggable client helps dealing with the thundering herd problem. You can read more about it
+on <a href="http://en.wikipedia.org/wiki/Thundering_herd_problem">Wikipedia</a>.</p>
+</div>
+<div class="paragraph">
+<p>Like previous pluggable clients, it inherits all functionality from the default client, adding some
+additional methods for getting/setting keys.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example setup</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span> <span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;CLIENT_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.client.HerdClient&quot;</span><span class="tok-p">,</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>This client exposes additional settings:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>CACHE_HERD_TIMEOUT</code>: Set default herd timeout. (Default value: 60s)</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pluggable_serializer">3.16. Pluggable serializer</h3>
+<div class="paragraph">
+<p>The pluggable clients serialize data before sending it to the
+server. By default, <em>django_redis</em> serialize the data using Python
+<code>pickle</code>. This is very flexible and can handle a large range of object
+types.</p>
+</div>
+<div class="paragraph">
+<p>To serialize using JSON instead, the serializer <code>JSONSerializer</code> is
+also available.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example setup</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span> <span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;CLIENT_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.client.DefaultClient&quot;</span><span class="tok-p">,</span>
+            <span class="tok-s2">&quot;SERIALIZER&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.serializers.json.JSONSerializer&quot;</span><span class="tok-p">,</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+<div class="paragraph">
+<p>There&#8217;s also support for serialization using <em>MsgPack</em> <em><a href="http://msgpack.org/" class="bare">http://msgpack.org/</a></em>
+(that requires the msgpack-python library):</p>
+</div>
+<div class="listingblock">
+<div class="title">Example setup</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span> <span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-s2">&quot;BACKEND&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.cache.RedisCache&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;LOCATION&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;redis://127.0.0.1:6379/1&quot;</span><span class="tok-p">,</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;CLIENT_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.client.DefaultClient&quot;</span><span class="tok-p">,</span>
+            <span class="tok-s2">&quot;SERIALIZER&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;django_redis.serializers.msgpack.MSGPackSerializer&quot;</span><span class="tok-p">,</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="_pluggable_redis_client">3.17. Pluggable redis client</h3>
+<div class="paragraph">
+<p><em>django_redis</em> uses the Redis client <code>redis.client.StrictClient</code> by default. It
+is possible to use an alternative client.</p>
+</div>
+<div class="paragraph">
+<p>You can customize the client used by setting <code>REDIS_CLIENT_CLASS</code> in the
+<code>CACHES</code> setting. Optionally, you can provide arguments to this class
+by setting <code>REDIS_CLIENT_KWARGS</code>.</p>
+</div>
+<div class="listingblock">
+<div class="title">Example setup</div>
+<div class="content">
+<pre class="pygments highlight"><code data-lang="python"><span></span><span class="tok-n">CACHES</span> <span class="tok-o">=</span> <span class="tok-p">{</span>
+    <span class="tok-s2">&quot;default&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+        <span class="tok-s2">&quot;OPTIONS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span>
+            <span class="tok-s2">&quot;REDIS_CLIENT_CLASS&quot;</span><span class="tok-p">:</span> <span class="tok-s2">&quot;my.module.ClientClass&quot;</span><span class="tok-p">,</span>
+            <span class="tok-s2">&quot;REDIS_CLIENT_KWARGS&quot;</span><span class="tok-p">:</span> <span class="tok-p">{</span><span class="tok-s2">&quot;some_setting&quot;</span><span class="tok-p">:</span> <span class="tok-bp">True</span><span class="tok-p">},</span>
+        <span class="tok-p">}</span>
+    <span class="tok-p">}</span>
+<span class="tok-p">}</span></code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="license">4. License</h2>
+<div class="sectionbody">
+<div class="listingblock">
+<div class="content">
+<pre class="pygments highlight"><code data-lang="text"><span></span>Copyright (c) 2011-2015 Andrey Antukh &lt;niwi@niwi.nz&gt;
+Copyright (c) 2011 Sean Bleier
+
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions
+are met:
+1. Redistributions of source code must retain the above copyright
+   notice, this list of conditions and the following disclaimer.
+2. Redistributions in binary form must reproduce the above copyright
+   notice, this list of conditions and the following disclaimer in the
+   documentation and/or other materials provided with the distribution.
+3. The name of the author may not be used to endorse or promote products
+   derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE AUTHOR ``AS IS&#39;&#39; AND ANY EXPRESS OR
+IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
+OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+IN NO EVENT SHALL THE AUTHOR BE LIABLE FOR ANY DIRECT, INDIRECT,
+INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT
+NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF
+THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</code></pre>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div id="footer">
+<div id="footer-text">
+Last updated 2018-11-19 09:56:22 +0100
+</div>
+</div>
+</body>
+</html>

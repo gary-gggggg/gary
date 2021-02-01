@@ -1,0 +1,9 @@
+房源信息管理系统
+一、正确导入相关文件
+    将文件夹house_information_manager_system拷贝到Pycharm工程中
+    标记项目根目录
+    运行dal.py，可以看到数据.
+
+二、搭建MVC架构
+
+三、按1键显示所有房源信息

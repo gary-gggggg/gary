@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul{
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    li{
+      float: left;
+    }
+  </style>
+</head>
+<body>
+  <!-- ul>li*4>img -->
+  <ul>
+    <li><img src="../imgs/bk0-8.jpg" alt=""></li>
+    <li><img src="../imgs/bk1-8.jpg" alt=""></li>
+    <li><img src="../imgs/bk2-8.jpg" alt=""></li>
+    <li><img src="../imgs/bk3-8.jpg" alt=""></li>
+  </ul>
+
+  <script>
+    var imgs = document.getElementsByTagName('img');
+    var arr = [
+    "../imgs/bk0-8.jpg","../imgs/bk1-8.jpg",
+    "../imgs/bk2-8.jpg","../imgs/bk3-8.jpg",
+    "../imgs/bk4-8.jpg","../imgs/bk5-8.jpg",
+    "../imgs/bk6-8.jpg","../imgs/bk7-8.jpg",
+    "../imgs/bk8-8.jpg","../imgs/bk9-8.jpg"
+    ]
+    // 打乱数组
+    arr.sort(function(a,b){
+      return 0.5 - Math.random()
+    })
+    console.log(arr);
+
+    for(var i=0;i<imgs.length;i++){
+      imgs[i].src = arr[i]
+    }
+  </script>
+
+  <script>
+    // // 09:55~10:10
+    // var imgs = document.getElementsByTagName('img');
+    // // 随机 生成4个图片路径
+    // var arr = [];//保存随机数
+    // // 生成一个0~9之间的随机数 num
+    // // 去掉重复的内容
+    // while(arr.length<4){
+    //   var num = parseInt(Math.random()*10);
+    //   // 如果数组中有num相同的值 就不添加 没有再添加
+    //   if(arr.indexOf(num)==-1){
+    //     arr.push(num)
+    //   }
+    // }
+    // // 替换页面中元素的src
+    // for(var i=0;i<imgs.length;i++){
+    //   imgs[i].src = `../imgs/bk${arr[i]}-8.jpg`
+    // }
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <div>
+    <input type="text" placeholder="请输入姓名">
+  </div>
+  <div>
+    <input type="password" placeholder="请输入密码">
+  </div>
+  <div>
+    <input id="save" checked type="checkbox">记住密码
+  </div>
+  <button id="btn">登录</button>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // 当用户点击登录按钮时  
+    // 如果选中记住密码显示 保存并登录 
+    // 如果没有选中记住密码显示 正常登录
+    $('#btn').click(function(){
+      // 检查save按钮是否有checked属性 
+      // console.log($('#save'));
+      // console.log($('#save').attr('checked'))
+      // console.log($('#save').prop('checked')) 
+      if($('#save').prop('checked')){
+        alert('保存并登录')
+      }else{
+        alert('正常登录')
+      }
+    })
+
+
+
+
+
+  </script>
+
+</body>
+</html>

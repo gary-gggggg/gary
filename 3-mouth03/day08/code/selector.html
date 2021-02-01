@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  <ul>
+    <h1>hello</h1>
+    <li>item1</li>
+    <li>item2</li>
+    <li>item3</li>
+  </ul>
+
+  <script src="../js/jquery.min.js"></script>
+
+  <script>
+    // 第一个li文字颜色为红色
+    // $('li:first').css('color','red');
+    // 最后一个li文字颜色为蓝色
+    // $('li:last').css('color','blue');
+
+    // 练习 11:18~11:23  使用  过滤选择器匹配奇数偶数索引值的元素
+    // 匹配指定索引值 或大于小于索引值的元素
+    // $('li:odd').css('color','red');
+    // $('li:even').css('color','red');
+
+    // $('li:eq(1)').css('color','red');
+    // $('li:lt(1)').css('color','red');
+    // $('li:gt(1)').css('color','red');
+
+    // 除了第一个li以外的所有li字体变红
+    $('li:not(li:first)').css('color','red')
+
+
+    
+    // 10:56~11:10
+    // console.log($('h1+li'));
+    // console.log($('h1~li'));
+
+
+
+    // var lis = document.getElementsByTagName('li');
+    // for(var i=0;i<lis.length;i++){
+    //   lis[i].onclick = function(){
+    //     alert('hello');
+    //   }
+    // }
+
+    // var lis = $('li');
+    // console.log(lis);
+    // jquery中将事件绑定的属性 封装成方法
+    // onclick -->  click()
+    $('li').click(function(){
+      alert('hello')
+    })
+  </script>
+</body>
+</html>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slide</title>
+  <style>
+    #slide{
+      position: relative;
+      width: 379px;
+      height: 419px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+    .item{
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      opacity: 0;
+      transition: all 0.2s;
+    }
+    .item:hover{
+      cursor: pointer;
+      opacity: 0.8px;
+    }
+    .active{
+      opacity: 1;
+      z-index: 5;
+      transition: all 1s;
+    }
+    .yd{
+      opacity: 0.7;
+      z-index: 6;
+    }
+    .yd:hover{
+      opacity: 1;
+      cursor:pointer;
+    }
+    #left{
+      position: absolute;
+      left: 0px;
+      top: 186px;
+    }
+    #right{
+      position: absolute;
+      right: -360px;
+      top: 195px;
+    }
+  </style>
+</head>
+<body>
+  <ul id="slide">
+    <li class="item active"><img src="/home/tarena/mouth03/day07/imgs/gm1-6.jpg" alt=""></li>
+    <li class="item"><img src="/home/tarena/mouth03/day07/imgs/gm2-6.jpg" alt=""></li>
+    <li class="item"><img src="/home/tarena/mouth03/day07/imgs/gm3-6.jpg" alt=""></li>
+    <li class="item"><img src="/home/tarena/mouth03/day07/imgs/gm4-6.jpg" alt=""></li>
+    <li class="item"><img src="/home/tarena/mouth03/day07/imgs/gm5-6.jpg" alt=""></li>
+    <li id="left" class="yd" onclick=""><img src="/home/tarena/mouth03/day07/imgs/l1-6.png" alt=""></li>
+    <li id="right" class="yd" onclick=""><img src="/home/tarena/mouth03/day07/imgs/r1-6.png" alt=""></li>
+  </ul>
+  
+  <script>
+    var pic=document.getElementsByClassName('item');
+    var sl=document.getElementById('slide');
+    var left=document.getElementById('left');
+    var right=document.getElementById('right');
+    var ii=0;
+    var giaoid=setInterval(cut,3000);
+    sl.onmouseover=function(){
+      clearInterval(giaoid)
+    };
+    sl.onmouseout=function(){
+      giaoid=setInterval(cut,3000);
+    }
+    left.onclick=function(){
+      clearInterval(giaoid);
+      for(var q=0;q<=4;q++)pic[q].className='item';
+      ii==0?ii=pic.length-1:ii--;
+      pic[ii].className='item active';
+    }
+    right.onclick=function(){
+      clearInterval(giaoid);
+      for(var q=0;q<=4;q++)pic[q].className='item';
+      ii==pic.length-1?ii=0:ii++;
+      pic[ii].className='item active';
+    }
+    //切换下一张图片的函数
+    function cut(){
+      //切换下一张图片
+      //找到当前显示的Li去掉class  active
+      //找到下一个li
+      for(var i=0;i<=4;i++)pic[i].className='item';
+      pic[ii].className='item active';
+      ii<pic.length-1?ii++:ii=0;
+    };
+
+  </script>
+</body>
+</html>

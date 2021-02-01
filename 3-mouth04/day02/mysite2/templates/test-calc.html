@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>计算器</title>
+</head>
+<body>
+<form action='/mycalc' method='POST'>
+    <input type='text' name="x" value="{{ x }}">
+    <select name='op'>
+        <option value="add" {% if op == 'add'%} selected {% endif %}> +加 </option>
+        <option value="sub" {% if op == 'sub'%} selected {% endif %}> -减 </option>
+        <option value="mul" {% if op == 'mul'%} selected {% endif %}> *乘 </option>
+        <option value="div" {% if op == 'div'%} selected {% endif %}> /除 </option>
+    </select>
+    <input type='text' name="y" value="{{ y }}"> = <span>{{ result }}</span>
+    <div>
+        <input type="submit" value='开始计算'>
+    </div>
+</form>
+</body>
+</html>

@@ -1,0 +1,105 @@
+一 登录功能
+    登录功能的url如何设计？是围绕用户资源的url吗？
+    v1/users   ： GET、POST、PUT、DELETE ? 适合作为登录功能的操作？
+   
+    一旦登录成功，创建token资源，所以登录功能的url可以围绕token资源设计
+    POST  -> v1/tokens
+    可以把token放到单独的应用中操作
+    1. 创建一个token应用，并注册
+        python3 manage.py startapp btoken
+
+    2. 前端：分析login.html页面，编写ajax请求的代码
+ 
+    3. 后端: url -> 视图函数或视图类，返回JsonResponse 
+ 
+二 查看和修改用户信息
+     1 .查看用户信息
+         用户url:127.0.0.1:5000/tedu/info   ，页面 about.html
+         分析代码：
+         http:     //    127.0.0.1:5000/tedu/info
+                                  arrUrl[1].split('/ ')[1]
+                             127.0.0.1:5000      tedu     info
+                                    [0]                    [1]        [2] 
+         //  1. 从地址栏获取的用户名称（博客的作者）
+         var blog_username = arrUrl[1].split('/')[1];
+
+         //  2. 从本地存储中获取token和用户名。（登录的用户名）
+         token = window.localStorage.getItem('dnblog_token');
+         username = window.localStorage.getItem('dnblog_user');
+      
+        //  3. 发送ajax请求，请求方式是get
+        url:"http://127.0.0.1:8000/v1/users/"+ blog_username,
+        从上述的url中，得到获取的是博客的作者的信息
+     
+        // 4. 发送请求前，在请求头的中增加了token的信息
+        request.setRequestHeader("Authorization", token);
+         
+       // 5. 正确的收到响应后，将得到的用户信息，并使用html标签，动态的拼接出整个页面
+
+ 
+         
+
+     2. 修改用户信息         
+         用户url:127.0.0.1:5000/tedu/change_info ,页面 change_info.html
+
+         // 1 从本地存储中获取token和用户名称（登录的用户名）
+         token = window.localStorage.getItem('dnblog_token');
+         username = window.localStorage.getItem('dnblog_user'); 
+
+        // 2 向后端发送ajax get请求，请求的url:(登录的用户名)
+        // 目前的username,只是确保被修改的一定是登录的用户信息，不能修改其他用户信息
+        // 另外还要确保，只有登录用户修改信息，非登录用户或游客是不能修改信息的。
+        // 最终的效果：登录用户修改自己的信息。换句话 说，修改信息是需要登录认证的。
+        url:"http://127.0.0.1:8000/v1/users/"+ username,
+ 
+        // 3. 发送请求前，在请求头的中增加了token的信息
+        request.setRequestHeader("Authorization", token);
+       
+       // 4  正确的收到响应后，将得到的用户信息，并使用html标签，动态的拼接出整个页面
+        
+  3. 返回用户信息，但是我们不返回全量信息，而是根据用户的需要返回指定信息
+      http://127.0.0.1:8000/v1/users/tedu?sign=1&info=1&password=1
+      前端设置这样的一个查询字符串sign=1&info=1的目的是获取指定的用户的sign和info。
+      如果查询字符串的名称有误，则忽略不计；如果有敏感信息，则不给。如何实现？？？
+      反射技术-已知一个对象，可以获取到对象的属性、方法等信息（元数据）。在很多的
+      集成开发工具中的智能提示使用的都是反射技术。
+      hasattr(对象，属性)-判断对象是否有该属性
+      getattr(对象，属性)-获取对象中属性的值
+      伪代码：
+      keys = request.GET.keys()
+      for k in keys:
+           if k == password:
+                 continue
+          if  hasattr(user,key):
+                 v = getattr(user,key)      
+ 4. 用户信息修改
+     4.1 用户头像的上传
+           1> .回顾一下上传文件的配置，用户上传的文件统一的放到项目的media目录下
+           所以，先配置media的访问路由和存储路径。 
+           # 用户上传文件的配置
+           MEDIA_URL = '/media/'
+           MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+           2> . 创建media目录
+           3>. 添加media路由的绑定
+           from django.conf import settings
+           from django.conf.urls.static import static
+           urlpatterns += static(settings.MEDIA_URL, 
+                             document_root=settings.MEDIA_ROOT) 
+           前端头像上传的相关函数，在函数中发送Ajax请求。
+            function upload(){
+               //1 获取token和用户名
+               var token = window.localStorage.getItem('dnblog_token');
+               var username = window.localStorage.getItem('dnblog_user');
+               // 2 发送ajax请求的url，username (登录用户的用户名)
+               var url = 'http://127.0.0.1:8000/v1/users/' + username + '/avatar'
+               // 3 请求方式是post
+               // 4 在发送请求前，将token放到请求中
+               // 5 成功的收到响应后，重载当前页面，目的是可以直接看到 上传的头像
+            }
+            
+           
+     4.2 用户信息的修改
+
+   5. 对用户信息的修改，头像的上传一定是需要登录认证后才能操作。另外，其它的操作
+       例如:对文章的操作，也需要登录认证。所以，适合用装饰器实现登录认证的。
+       把它放到一个通用的tools包中，谁用谁导包。

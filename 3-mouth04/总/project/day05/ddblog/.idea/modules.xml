@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/../client/.idea/client.iml" filepath="$PROJECT_DIR$/../client/.idea/client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ddblog.iml" filepath="$PROJECT_DIR$/.idea/ddblog.iml" />
+      <module fileurl="file://$PROJECT_DIR$/../test_celery/.idea/test_celery.iml" filepath="$PROJECT_DIR$/../test_celery/.idea/test_celery.iml" />
+    </modules>
+  </component>
+</project>

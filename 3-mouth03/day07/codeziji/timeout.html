@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>一次性定时器</title>
+  <style>
+    div{
+      position: fixed;
+      width: 122px;
+      float: left;
+      top: 50%;
+      right: -123px;
+      margin-top: -150px;
+      transition: right 1.5s;
+      /* display: none; */
+    }
+    #close:hover{
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div id="father">
+    <img src="/home/tarena/mouth03/day06/imgs/img02-5.png" alt="">
+    <img src="/home/tarena/mouth03/day06/imgs/img01-5.png" alt="" id="close">
+  </div>
+  <script>
+    var fa=document.getElementById('father')
+    var cl=document.getElementById('close')
+    setTimeout(function(){fa.style='right:0px;';},2000)
+    cl.onclick=function(){
+      fa.style='right:-123px;'
+      setTimeout(function(){fa.style='right:0px;';},500)
+    }
+
+  </script>
+</body>
+</html>

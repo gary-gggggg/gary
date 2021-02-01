@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<!--
+author:guojunyu
+date:2019-05-19
+desc:this demo is about blog. PLEASE NOTE:If you have trouble running it ,try any of the other demos or connect with auther.
+A ny individuals and organizations and not for commercial use, professiona website for customized web site.
+-->
+<head>
+        <meta charset="utf-8">
+        <link href="/static/css/login_reglogin.css" rel='stylesheet' type='text/css' />
+        <link href="/static/css/index.css" rel="stylesheet">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="/static/js/jquery.min.js" type="text/javascript"></script>
+</head>
+
+<body>
+</body>
+
+
+<script>
+    token = window.localStorage.getItem('dnblog_token');
+    username = window.localStorage.getItem('dnblog_user');
+    var html_body = ''
+    $.ajax({
+       // 请求方式
+       type:"get",
+       // url
+       url:"http://127.0.0.1:8000/v1/users/"+ username,
+       beforeSend: function(request) {
+           request.setRequestHeader("Authorization", token);
+       },
+       success:function (result) {
+           if (200 == result.code){
+               console.log(result);
+               $(document).attr('title', '个人信息修改-'+ result.data.nickname+'的博客');
+               html_body += '<div class="bg">';
+               html_body += '<img src="/static/images/c.jpg" alt="">';
+               html_body += '</div>'
+               html_body += '<div class="main">';
+               html_body += '<div class="header" >';
+               html_body += '<h1>个人信息修改</h1>';
+               html_body += '</div>';
+               html_body += '<p></p>';
+               html_body += '<ul class="left-form">';
+               html_body += '<li>';
+               html_body += '<form action=""  method="post" enctype="multipart/form-data" class="avatar_form">';
+               //avatar
+               if (result.data.avatar) {
+                   var avatar_url = 'http://127.0.0.1:8000/media/'+ result.data.avatar;
+                   html_body += '<p class="avatar"> <img src=' + avatar_url + ' alt=""> </p>';
+               }else{
+                   html_body += '<p class="avatar"> <img src="/static/images/avatar.jpg" alt=""> </p>';
+               }
+               html_body += '<p>';
+
+               html_body += '<label for="avatar">上传头像</label>&nbsp;';
+               html_body += '&nbsp;<input type="file" name="avatar" id="avatar">';
+               html_body += '</br>'
+               html_body += '</br>'
+               html_body += '<input id="submit-btn" type="button" value="上传" onclick="upload()">';
+               html_body += '</p>';
+               html_body += '</form>';
+               html_body += '</li>';
+
+               html_body += '<label style="float:left;display:inline-block">昵称: </label>'
+               html_body += '<div class="clear"> </div>';
+               html_body += '<li>';
+               html_body += '<input type="text" class="nickname" name="nickname" value="' + result.data.nickname + '"' + 'placeholder="请输入新的昵称" required maxlength="10" />';
+               html_body += '<div class="clear"> </div>';
+               html_body += '</li>';
+               html_body += '<label style="float:left;display:inline-block">个人签名: </label>'
+               html_body += '<div class="clear"> </div>';
+               html_body += '<li>';
+               if(result.data.sign){
+                   html_body += '<input type="text" class="sign" name="sign" placeholder="请输入个人签名" required  value="' + result.data.sign + '"' + '/>';
+               }else{
+                   html_body += '<input type="text" class="sign" name="sign" placeholder="请输入个人签名" required  value=""/>';
+               }
+               html_body += '<div class="clear"> </div>';
+               html_body += '</li>';
+               html_body += '<label style="float:left;display:inline-block">个人描述: </label>'
+               html_body += '<div class="clear"> </div>';
+               if(result.data.info){
+                   html_body += '<textarea class="info" rows="3" cols="20" placeholder="请输入个人描述" style="width:100%; font-size:15px; padding:0.7em 2em 0.7em 1em" required>' + result.data.info + '</textarea>';
+               }else{
+                   html_body += '<textarea class="info" rows="3" cols="20" placeholder="请输入个人描述" style="width:100%; font-size:15px; padding:0.7em 2em 0.7em 1em" required></textarea>';
+               }
+               html_body += '<div class="clear"> </div>';
+               html_body += '</li>';
+              // html_body += '<li>';
+              // html_body += '<input type="password" class="password_1" name="password_1" placeholder="请输入密码" required minlength="6" maxlength="11"/>';
+              // html_body += '<div class="clear"> </div>';
+              // html_body += '</li>';
+              // html_body += '<li>';
+              // html_body += '<input type="password" class="password_2" name="password_2" placeholder="请再次确认密码" required minlength="6" maxlength="11"/>';
+              // html_body += '<div class="clear"> </div>';
+              // html_body += '</li>';
+
+               html_body += '<li style="border:none">';
+               html_body += '</br>'
+               html_body += '<input type="button" value="保存" onclick="changeInfo()">';
+               html_body += '</li>';
+               html_body += '</ul>';
+               html_body += '<div class="clear"> </div>';
+               html_body += '</div>';
+               $('body').html(html_body);
+               //初始化登出事件
+               loginOut()
+             }else{
+                 alert(result.error)
+             }
+         }
+    });
+
+    function upload(){
+        var token = window.localStorage.getItem('dnblog_token');
+        var username = window.localStorage.getItem('dnblog_user');
+        //$('.avatar_form').attr('action', 'http://127.0.0.1/users/avatar')
+        var url = 'http://127.0.0.1:8000/v1/users/' + username + '/avatar'
+        formdata = new FormData();
+        formdata.append("avatar",$("#avatar")[0].files[0]);
+        $.ajax({
+            processData: false,
+            contentType: false,
+            url: url,
+            type: 'post',
+            data: formdata,
+            beforeSend: function(request) {
+                request.setRequestHeader("Authorization", token);
+            },
+            success: function(arg) {
+	            if (arg.code == 200) {
+		            alert('成功！')
+                    window.location.reload()
+	            } else {
+		            alert('失败！')
+                    }
+                }
+            })
+
+        }
+
+    function changeInfo(){
+        var token = window.localStorage.getItem('dnblog_token');
+        var username = window.localStorage.getItem('dnblog_user');
+        var nickname = $('.nickname').val();
+        var sign = $('.sign').val();
+        var info = $('.info').val();
+        var post_data = {'nickname':nickname, 'sign':sign, 'info':info};
+
+        $.ajax({
+        // 请求方式
+        type:"put",
+        // contentType 
+        contentType:"application/json",
+        // dataType
+        dataType:"json",
+        // url
+        url:"http://127.0.0.1:8000/v1/users/" + username,
+        // 把JS的对象或数组序列化一个json 字符串
+        data:JSON.stringify(post_data),
+        // result 为请求的返回结果对象
+        beforeSend: function(request) {
+            request.setRequestHeader("Authorization", token);
+        },
+        success:function (result) {
+            if (200 == result.code){
+                alert("修改成功")
+
+            }else{
+                alert(result.error)
+                window.location.href = '/login'
+            }
+           }
+       });
+
+    }
+</script>
+
+</html>

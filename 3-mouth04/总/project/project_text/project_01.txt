@@ -1,0 +1,84 @@
+二、CORS-跨域资源共享
+       解决Ajax跨域的问题
+       将请求分成了两类：简单请求和预检请求。
+       预检请求中预检什么意思？在发送主请求(GET、POST、PUT、DELETE)之前，需要
+       发送OPTION请求预先检查和协商一下，然后再发主请求。
+三、前后端分离
+       后端： ddblog   ，使用Django框架完成的。默认使用的是8000端口
+       前端： client       ，使用flask框架完成的。   默认使用的是5000端口 
+       端口号不同，意味着前后端的请求响应一定是跨域的。
+       flask-是一个轻量级的python web 后端框架。它不是一个前端框架。
+       将解压缩后的client目录下的所有文件复制到day02下面，进入到client目录下：
+       执行命令： python3 flask_client.py run      ,启动flask项目，在5000端口提供服务。
+       前后端的交互使用Ajax，交互的数据格式使用json。url 基本满足RESTful风格。
+       用户url: 一般是越简单越好。
+       前后端程序员交互使用的url:一般需要符合RESTful风格。
+四、URL与URI的区别
+       URL- 统一资源定位符。定位符是标识符的一种，URL是URI的一种。
+       URI- 统一资源标识符。标识符可以使用位置标识也可以使用其它方式标识。  
+       在描述资源的URL中是不允许出现动词的；资源的数据或状态发生改变是由HTTP协议的
+       不同请求方式来实现的：GET、POST、PUT、DELETE 。
+       
+五、项目开发的步骤
+       1. <<需求分析说明书>> 
+           一般情况下，不涉及什么的具体的技术和细节。只是描述要做什么，不描述怎么做。
+           咱们下去分小组开发项目时，这个文档不做过多要求。只要简单描述一下你们的项目
+           是什么？为什么要开发这个项目？大致的功能和模块。
+       2. <<项目设计说明书>>
+           分概要设计和详细设计。对与信息管理系统，首要的数据库设计。
+           然后就是api的设计，前后端交互的数据格式json，数据用例。
+       3. 项目实现(编码)
+       4. 项目测试（简单的功能测试）
+       5. 项目部署（参考我们day08的部署步骤）
+六、用户模块
+       1. 创建并注册user应用
+           python3 manage.py startapp user
+       2. 在models.py中增加模型类UserProfile类，【生成随机默认的个人签名】
+       3. 生成表结构
+           python3 manage.py makemigrations
+           python3 manage.py migrate
+       4. user应用中的url设计，【符合RESTful风格】
+           url: http://127.0.0.1:8000/v1/users      
+       5. 用户注册
+           POST  http://127.0.0.1:8000/v1/users     前后端交互json格式的数据
+           自定义异常码：  10100~10199
+
+          5.1 前端页面register.html 分析，以及ajax请求
+                
+
+          5.2 后端的url以及视图函数  [视图函数的返回一定是JsonResponse，前后分离后，不                再会调用render返回模板页面了。]
+               5.2.1 FBV-function based view -视图函数
+                        url                                       <=>         视图函数
+                   /v1/users
+               GET、POST、PUT、DELETE                      def user_vew(request):
+               
+               // 要求我们在一个视图函数中处理所有的请求方式
+               def user_vew(request):
+                     if request.method == 'GET':
+                             # 处理get请求
+                     elif request.method =='POST':
+                             # 处理post请求
+                     elif request.method =='PUT':
+                             # 处理put请求
+                     elif request.method =='DELETE':
+                             # 处理delete请求
+               5.2.2 CBV-class based  view - 视图类
+                         url                                       <=>         视图类
+                   /v1/users
+               GET、POST、PUT、DELETE                      class UserView(View):
+               class UserView(View):
+                     def get(self,request):
+                          # 处理get请求 
+         
+                     def post(self,request):
+                          # 处理post请求 
+
+                     def put(self,request):
+                          # 处理put请求 
+
+                     def delete(self,request):
+                          # 处理delete请求 
+              选择FBV还是CBV一般性原则：
+              同一个url有一个或两个请求方式，选择FBV。
+              同一个url有两个或两个以上请求，选择CBV。
+              如果是两个请求，当处理请求的逻辑复杂选择CBV；否则，选择FBV

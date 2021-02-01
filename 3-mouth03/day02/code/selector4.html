@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选择器的优先级</title>
+  <style>
+    div{
+      /* 1 */
+      color: blue;
+    }
+    #div1{
+      /* 100 */
+      color:green;
+    }
+    .red{
+      /* 10 */
+      color: red;
+    }
+    #div1>div{
+      /* 100+1 */
+      color: pink;
+    }
+    #div1:hover,#div1>div:hover{
+      /* 1+10 */
+      color: black;
+    }
+  </style>
+</head>
+<body>
+  <div id="div1" class="red">
+    hello world
+    <div>这是内部的子元素div</div>
+  </div>
+</body>
+</html>

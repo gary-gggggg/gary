@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选择器</title>
+
+  <style>
+    /* 群组选择器  选择多个页面内容然后统一设置样式 */
+    h1,p,ul,li{
+      /* 初始化页面样式 */
+      margin: 0;
+      padding: 5cm;
+    }
+    /* 后代选择器 */
+    body li{
+      color:red;
+    }
+    /* 子代选择器 */
+    /* ul>li{
+      background-color: aquamarine;
+    } */
+    /* 后代选择器包含子代元素 */
+    ul li{
+      background-color: aquamarine;
+    }
+    #navBar>li{
+      
+    }
+  </style>
+</head>
+<body>
+  <h1>复杂选择器演示</h1>
+  <!-- p>lorem -->
+  <p>
+    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Atque veniam neque culpa tenetur, provident asperiores nam esse quam soluta, maxime enim deleniti. Dolore ipsam eius dignissimos aliquam cumque, fugiat odit?
+  </p>
+  <!-- ul>li*3 -->
+  <ul id="navBar">
+    <li>item1</li>
+    <li>item2</li>
+    <li>item3</li>
+  </ul>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>页面元素显示方式</title>
+  <style>
+    div{
+      width: 200px;
+      background-color: red;
+    }
+    span{
+      width: 200px;
+      background-color: aqua;
+      text-align: center;
+      /* 16:07~16:22 */
+      /* 变成块元素 */
+      /* 设置元素的显示方式 */
+      /* block 块元素 独占一行 默认宽度和父元素一致 可以设置宽高 */
+      /* inline  行内元素  不能设置宽高 可以和其它元素在一行显示 */
+      display: block;
+    }
+    h1{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>hello world</h1>
+  <div>块元素 独占一行 默认宽度和父元素一致</div>
+  <span>行内元素</span>
+  <a href="#">行内元素</a>
+  <b>行内元素</b>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>exe01</title>
+  <style>
+    .i:hover{
+      color: #fff;
+      background-color: red;
+      cursor: pointer;
+    }
+
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="fir">难度</li>
+    <li class="i">全部</li>
+    <li class="i">简单</li>
+    <li class="i active">中级</li>
+    <li class="i">高级</li>
+  </ul>
+  <script>
+    var items=document.getElementsByClassName('i')
+    for(var i=0;i<items.length;i++){
+      items[i].onclick=function(){
+        // console.log(this.innerHTML)
+        // alert(this.innerHTML)
+        this.className='i active';
+      }
+      }
+
+
+    // for(var i=0;i<items.length;i++){
+    //   items[i].onclick=(function giao(i){
+    //   return function(){
+    //     console.log(items[i])
+    //     alert(items[i].innerHTML)
+    //     }
+    //   })(i)
+    //   }
+    
+    //这里只提供环境
+    
+  </script>
+</body>
+</html>

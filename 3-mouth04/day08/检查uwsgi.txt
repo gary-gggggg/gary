@@ -1,0 +1,12 @@
+请按如下方式检查一下您的uwsgi是否正确安装
+
+1，ubuntu终端输入如下命令
+sudo pip3 freeze|grep -i 'uwsgi'
+
+2，如果pip3安装过uwsgi，则会输出
+uWSGI==2.0.18
+
+3，安装命令如下
+sudo pip3 install uwsgi==2.0.18 -i https://pypi.tuna.tsinghua.edu.cn/simple/
+
+4，安装后用pip3命令检查 【参照1-2】

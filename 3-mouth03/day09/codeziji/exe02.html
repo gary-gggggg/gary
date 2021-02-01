@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>三级联动下拉菜单</title>
+</head>
+
+<body>
+  <select name="" id="prov">
+    <option value="0">请选择</option>
+  </select>
+  <select name="" id="city">
+    <option value="0">请选择</option>
+  </select>
+  <select name="" id="area">
+    <option value="0">请选择</option>
+  </select>
+  <script src="/home/tarena/mouth03/day09/jquery.min.js"></script>
+  <script src="/home/tarena/mouth03/day09/data.js"></script>
+  <script>
+    var prov = $('#prov');
+    var city = $('#city');
+    var area = $('#area');
+    $.each(data, function (i, prv) {
+      prov.append(`<option value="${prv.provId}">${prv.provname}</option>`)
+    })
+    prov.change(function () {
+      city.html(`<option value="0">请选择</option>`);
+      area.html(`<option value="0">请选择</option>`);
+      if (prov.provId == 0) {
+        prov.html(`<option value="0">请选择</option>`);
+        city.html(`<option value="0">请选择</option>`);
+        area.html(`<option value="0">请选择</option>`);
+        return;
+      };
+      $.each(data, function (i, prv) {
+        if (prv.provId == prov.val()) {
+          city.html(`<option value="0">请选择</option>`)
+          area.html(`<option value="0">请选择</option>`)
+          $.each(prv.citys, function (ii, city1) {
+            city.append(`<option value="${city1.cityId}">${city1.cityname}</option>`)
+          })
+        }
+      })
+    })
+    city.change(
+      function () {
+        $.each(data, function (i, prv) {
+          $.each(prv.citys, function (i, city2) {
+            if (city2.cityId == city.val()) {
+              area.html(`<option value="0">请选择</option>`)
+              $.each(city2.areas, function (i, area2) {
+                area.append(`<option value="${area2.areaId}">${area2.areaname}</option>`)
+              })
+            }
+          })
+        })
+      }
+    )
+
+  </script>
+</body>
+
+</html>

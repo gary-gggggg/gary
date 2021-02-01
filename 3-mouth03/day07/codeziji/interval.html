@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>周期定时器初体验</title>
+</head>
+<body>
+  <button id="starr">开始</button>
+  <button id="end">结束</button>
+  <script>
+    var start=document.getElementById('starr')
+    var end=document.getElementById('end')
+    var arr=null
+    start.onclick=function(){
+        if(arr==null){timeid=setInterval(function(){console.log('giao')},1000)
+    
+    end.onclick=function(){
+      clearInterval(arr)
+      arr=null
+    }   
+  </script>
+</body>
+</html>

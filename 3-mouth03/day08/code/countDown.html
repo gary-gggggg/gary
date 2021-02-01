@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>倒计时</title>
+</head>
+
+<body>
+  <h1 id="show"></h1>
+  <script>
+    var end = new Date('2021-01-04 09:00:00');
+    var show = document.getElementById('show');
+
+    function countDown() {
+      var now = new Date();
+      var leftTime = parseInt((end - now) / 1000);
+      // 如果时间差小于等于0 说明时间到了或者已经超时了
+      // 停止定时器  在页面上显示 '来晚了'
+      if(leftTime<=0){
+        clearInterval(timer);
+        show.innerHTML = '来晚了';
+        return;//退出函数
+      }
+      // 天数
+      var days = parseInt(leftTime / 3600 / 24);
+      var hours = parseInt(leftTime / 3600 % 24);
+      var minutes = parseInt(leftTime / 60 % 60);
+      var seconds = leftTime % 60;
+     
+      show.innerHTML = `距离2021-01-04还有${days}天${hours}时${minutes}分${seconds}秒`
+    }
+    countDown();
+    // 启动周期性定时器 自动倒计时
+    var timer = setInterval(countDown,1000);
+  </script>
+</body>
+
+</html>

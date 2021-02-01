@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+  <select name="" id="city">
+    <option value="">请选择</option>
+  </select>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    var cityArr = [
+      { "cityId": 1001, "cityName": "北京" },
+      { "cityId": 1002, "cityName": "上海" },
+      { "cityId": 1003, "cityName": "深圳" },
+      { "cityId": 1004, "cityName": "西安" },
+      { "cityId": 1005, "cityName": "杭州" }
+    ]
+
+    $.each(cityArr,function(i,o){
+      $('#city').append(`<option value="${o.cityId}">${o.cityName}</option>`);
+    })
+  </script>
+</body>
+
+</html>

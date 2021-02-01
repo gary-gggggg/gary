@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jquery GET请求</title>
+</head>
+<script src="/static/js/jquery-1.11.3.js"></script>
+<script>
+    // 外层的函数作用：保证代码的执行是在文档的dom元素全部加载后再执行
+    $(function(){
+        $('#btn').click(function(){
+            alert('giao');
+            //发送ajax请求
+            $.ajax({
+                url:'/test_xhr_get_server',
+                type:'get',
+                success:function(res){
+                    $('#show').html(res);
+                    }
+            })
+        })
+    })
+
+</script>
+<body>
+<button id="btn">TEST_JQ_GET</button>
+<div id="show"></div>
+</body>
+</html>

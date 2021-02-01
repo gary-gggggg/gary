@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>if语句初体验2</title>
+</head>
+<body>
+  <script>
+    var y=prompt('请输入年份：');
+    var m=prompt('请输入月份：');
+    var d=prompt('请输入日期');
+    //所有天数
+    var sum=0;
+    if(m==2){
+      sum+=31
+    }else if(m==3){
+      sum+=31+28
+    }else if(m==4){
+      sum+=31+28+31
+    }else if(m==5){
+      sum+=31+28+31+30
+    }else if(m==6){
+      sum+=31+28+31+30+31
+    }else if(m==7){
+      sum+=31+28+31+30+31+30
+    }else if(m==8){
+      sum+=31+28+31+30+31+30+31
+    }else if(m==9){
+      sum+=31+28+31+30+31+30+31+31
+    }else if(m==10){
+      sum+=31+28+31+30+31+30+31+31+30
+    }else if(m==11){
+      sum+=31+28+31+30+31+30+31+31+30+31
+    }else if(m==12){
+      sum+=31+28+31+30+31+30+31+31+30+31+30
+    }
+    sum+=Number(d)
+    var leap=0;
+    if(y%400==0||y%4==0&&y%100!=0){leap=1;}
+    if(leap==1&&m>2){sum++;}
+    console.log(`这是今年的第${sum}天`)
+  </script>
+</body>
+</html>

@@ -1,0 +1,5 @@
+create procedure like_rap(in username varchar(30))
+begin
+select * from school where username=name;
+insert into hobby(name,hobby,price) value (username,"rapping",15646);
+end ^&*

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>分离事件绑定</title>
+</head>
+<body>
+  <button id="giao">点我</button>
+  <script>
+    var fun1=function(){
+      n=prompt('请输入您的姓名：')
+      console.log(`欢迎${n}来到直播间`)
+      }
+    //查找页面元素
+        //绑定事件
+    var dx=document.getElementById('giao');
+    dx.onclick=fun
+    // function fun(){
+    //   n=prompt('请输入您的姓名：')
+    //   console.log(`欢迎${n}来到直播间`)
+    // }
+    
+    
+  </script>
+</body>
+</html>

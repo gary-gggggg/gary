@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slide</title>
+
+  <style>
+    #slide {
+      position: relative;
+      width: 739px;
+      height: 419px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    /* 16:00~16:15 */
+    .item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      /* 不透明度0(透明)~1(不透明) */
+      opacity: 0;
+      /* 过渡 */
+      transition: all 0.5s;
+    }
+
+    .active {
+      opacity: 1;
+      z-index: 5;
+    }
+
+    /* 左右小箭头 */
+    #prev,#next{
+      position: absolute;
+      z-index: 6;
+      top: 50%;
+      margin-top: -20px;
+    }
+    #next{
+      right: 0;
+    }
+  </style>
+
+</head>
+
+<body>
+  <ul id="slide">
+    <li class="item active">
+      <img src="../imgs/gm1-6.jpg" alt="">
+    </li>
+    <li class="item">
+      <img src="../imgs/gm2-6.jpg" alt="">
+    </li>
+    <li class="item">
+      <img src="../imgs/gm3-6.jpg" alt="">
+    </li>
+    <li class="item">
+      <img src="../imgs/gm4-6.jpg" alt="">
+    </li>
+    <li class="item">
+      <img src="../imgs/gm5-6.jpg" alt="">
+    </li>
+
+    <li class="fader_control">
+      <img id="prev" src="../imgs/l1-6.png" alt="">
+      <img id="next" src="../imgs/r1-6.png" alt="">
+    </li>
+  </ul>
+
+  <script>
+    // 设置周期性定时器 
+    // 每隔1.5s自动 切换下一张图片
+    var items = document.getElementsByClassName('item');
+    var i = 0;//表示第一张图片(当前li的索引值)
+
+    // 切换下一张图片的函数
+    function next() {
+      // 切换下一张图片
+      // 找到当前的显示的li 去掉 class  active
+      items[i].className = 'item';
+      // 找到下一个li  添加class active
+      i++;
+      // 如果i递增以后值为items.length  没有图片
+      // 重置i的值
+      if (i == items.length) i = 0;
+      items[i].className = 'item active';
+    }
+    var timerId = setInterval(next, 1500);
+
+    // 当鼠标移入时 onmouseover 停止定时器
+    // 当鼠标移出时 onmouseout 启动定时器 
+    var slide = document.getElementById('slide');
+    slide.onmouseover = function () {
+      clearInterval(timerId)
+    }
+    slide.onmouseout = function () {
+      timerId = setInterval(next, 1500);
+    }
+
+
+    // 练习
+    // 将 imgs下l1-6和r1-6在页面中显示
+    // 分别放在ul左右两侧 垂直居中
+
+    // 切换到上一张图片
+    // 16:57~17:15
+    function prev() {
+      // 找到当前的显示的li 去掉 class  active
+      items[i].className = 'item';
+      // 找到上一个li  添加class active
+      i--;
+      // 如果i递减以后值为-1 说明是第一张图片变到最后一张图片 将i的索引值改为最后一张图的索引值
+      if (i == -1) i = items.length-1;
+      items[i].className = 'item active';
+    }
+    // 鼠标点击左侧图片时 切换上一张图片
+    var prevBtn = document.getElementById('prev');
+    prevBtn.onclick = prev;
+    // 鼠标点击右侧图片时 切换下一张图片
+    var nextBtn = document.getElementById('next')
+    nextBtn.onclick = next;
+
+
+  </script>
+
+
+</body>
+
+</html>

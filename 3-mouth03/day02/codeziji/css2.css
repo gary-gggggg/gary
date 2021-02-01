@@ -1,0 +1,6 @@
+/* 外部样式表文件初体验 */
+  h1{
+    color: blue;
+    background-color: crimson;
+    font-size: 60px
+  }

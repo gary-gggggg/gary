@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>使用jQuery</title>
+</head>
+<body>
+  <div id="demo"></div>
+  <!-- 引入外部JS文件 -->
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // 原生JS查找
+    var demo = document.getElementById('demo');
+    console.log(demo);//dom对象 / 原生JS对象
+    // jQuery方式查找
+    var $demo = $('#demo');
+    console.log($demo);//jQuery对象
+
+    // 原生JS对象可以使用document提供的属性和方法
+    // 如  innerHTML  onclick...
+
+    // jQuery对象不能使用原生JS对象的方法和属性
+  </script>
+</body>
+</html>

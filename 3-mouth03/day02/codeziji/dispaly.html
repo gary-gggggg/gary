@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>页面元素显示方式</title>
+  <style>
+    div{
+      width: 200px;
+      background-color: red;
+    }
+    /* span是行内元素所以改不了大小,其大小长度固定*/
+    span{
+      width: 200px;
+      background-color: blue;
+      display: block
+      /* 上面的语句讲span变为了块语句 
+      block 变块元素 inline变行内元素*/
+    }
+    h1{
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>giaogiao</h1>
+  <div>块元素 独占一行，默认宽度和父元素一致</div>
+  <span>行内元素</span>
+  <a href="#">行内元素</a>
+  <b>行内元素</b>
+</body>
+</html>

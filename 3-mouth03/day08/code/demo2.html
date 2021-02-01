@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+  <hr>
+
+  <!-- <div>hello</div> -->
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // $('div').css('color','red').css('font-size','30px').css('font-weight','bold').css('text-align','center')
+    // 14:55~15:10
+    var $div = $('<div>hello</div>');
+    // $('body').append($div);
+    // $('body').prepend($div);
+    // $('hr').after($div);
+    $('hr').remove();
+
+
+
+    $('div').css({
+      'color':'red',
+      'font-size':'30px',
+      'font-weight':'bold',
+      'text-align':'center'
+    })
+  </script>
+
+  
+</body>
+</html>

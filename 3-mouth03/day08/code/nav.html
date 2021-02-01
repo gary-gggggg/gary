@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    ul{
+      margin: 0;
+      padding: 0;
+      /* 去掉列表默认样式 */
+      list-style: none;
+    }
+    li{
+      display: inline-block;
+    }
+
+    .first{
+      color: #888;
+    }
+    /* 14:55~15:10 */
+    .item{
+      /* margin-left:20px;  */
+      margin: 0 10px;
+      padding: 0 3px;
+    }
+    .active  , .item:hover{
+      background-color: red;
+      color: #fff;
+      border-radius: 2px;
+    }
+  </style>
+</head>
+<body>
+  <ul>
+    <li class="first">难度：</li>
+    <li class="item">全部</li>
+    <li class="item">初级</li>
+    <li class="item active">中级</li>
+    <li class="item">高级</li>
+  </ul>
+
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    // day06/nav.html
+    $('.item').click(function(){
+      // // 去掉其他元素的class  active
+      // $('.item').removeClass('active');
+      // // 为当前元素添加class  active
+      // $(this).addClass('active');
+
+      // 当前元素添加class active 其余兄弟元素移除class active
+      // $(this).addClass('active').siblings().removeClass('active');
+
+      $(this).toggleClass('active');
+    })
+
+
+
+    // var items = document.getElementsByClassName('item');
+    // for(var i=0;i<items.length;i++){
+    //   items[i].onclick = function(){
+    //     for(var j = 0;j<items.length;j++){
+    //       items[j].className = 'item';
+    //     }
+    //     this.className = 'item active';
+    //   }
+    // }
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>下拉菜单的功能</title>
+</head>
+
+<body>
+  <select name="" id="city">
+    <option value="0">请选择</option>
+  </select>
+  <select name="" id="area">
+    <option value=" 0">请选择</option>
+  </select>
+  <script src="/home/tarena/mouth03/day09/jquery.min.js"></script>
+  <script>
+    var cityArr = [
+      {
+        'cityID': 1001, 'cityName': '杭州', 'areas': [
+          { 'areaID': 10011, 'areaName': '丽水' },
+          { 'areaID': 10012, 'areaName': '余杭' }
+        ]
+      },
+      {
+        'cityID': 1002, 'cityName': '上海', 'areas': [
+          { 'areaID': 10021, 'areaName': '奉贤' },
+          { 'areaID': 10022, 'areaName': '青浦' }
+        ]
+      },
+    ]
+    $.each(cityArr,function(i,city){
+      $('#city').append(`<option value="${city.cityID}">${city.cityName}</option>`)
+    })
+    
+    $('#city').change(function(){
+      if($('#city').val()==0){//用户点的是请选择
+        $('#area').html(`<option value="0">请选择</option>`)
+        return;}
+      //找到用户当前选择的城市
+      //通过城市.areas获取对应的地区，然后遍历地区数组将内容放在页面#area上
+      $.each(cityArr,function(i,city){
+        if(city.cityID==$('#city').val()){
+          console.log(city.areas)
+          $('#area').html(`<option value="0">请选择</option>`)
+          $.each(city.areas,function(ii,area1){
+            $('#area').append(`<option value="${area1.areaID}">${area1.areaName}</option>`)
+          })
+        }
+      })
+    })
+  </script>
+</body>
+
+</html>

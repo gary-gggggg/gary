@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>date对象</title>
+</head>
+<body>
+  <script>
+    var now = new Date();
+    console.log(now);
+    // var end = new Date(2020,11,31,10,30,0);
+    // console.log(end);
+    var end = new Date('2021/1/1');
+    console.log(end);
+
+    console.log(now.getTime());
+    console.log(end.getTime());
+
+    // 求时间差
+    var leftTime = parseInt((end - now)/1000);
+    console.log(leftTime);//ms  1000ms = 1s
+    // 在控制台打印
+    // 距离2021/1/1 还有xx时xx分xx秒
+    var hours = parseInt(leftTime/3600);
+    var minutes = parseInt(leftTime/60%60);
+    var seconds = leftTime % 60;
+    // 11:05~11:20
+    // 如果时分秒的取值为1位数字  补零
+    // 1 --> 01
+    console.log(`距离2021/1/1 还有${addZero(hours)}时${addZero(minutes)}分${addZero(seconds)}秒`);
+
+    function addZero(num){
+      // if(num<10){
+      //   return '0'+num
+      // }else{
+      //   return num+''
+      // }
+      return num<10?'0'+num:num+'';
+    }
+
+
+
+    // 获取
+    // now.getFullYear()
+    // now.getMonth()//0~11
+    // now.getDate()//日期
+    // now.getDay()//星期
+    // now.getHours()
+    // now.getMinutes()
+    // now.getSeconds()
+    // // now.getMilliseconds()
+
+    // // 设置
+    // now.setFullYear()
+
+    // 转字符串
+
+  </script>
+</body>
+</html>

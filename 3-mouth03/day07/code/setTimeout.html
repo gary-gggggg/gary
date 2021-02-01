@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>一次性定时器</title>
+  <style>
+    div {
+      position: fixed;
+      right: -123px;
+      top: 50%;
+      margin-top: -150px;
+      width: 122px;
+
+      transition: right 1.5s;
+      /* 隐藏 */
+      /* display: none; */
+    }
+  </style>
+</head>
+
+<body>
+  <div id="parent">
+    <img src="../imgs/img02-5.png" alt="">
+    <img id="close" src="../imgs/img01-5.png" alt="">
+  </div>
+  <script>
+    var parent = document.getElementById('parent')
+    var close = document.getElementById('close');
+
+    // 当close被单击时 
+    // 隐藏parent 然后 设置一次性定时器 5s后显示parent
+    close.onclick = function () {
+      parent.style = 'right:-123px';
+      setTimeout(function () {
+        parent.style = 'right:0;';
+      }, 5000)
+    }
+
+    setTimeout(function () {
+      parent.style = 'right:0;';
+    }, 3000)
+
+
+
+
+  </script>
+</body>
+
+</html>

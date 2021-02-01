@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    div{
+      width: 200px;
+      height: 200px;
+      background-color: orangered;
+    }
+  </style>
+</head>
+<body>
+  <div></div>
+  <script src="../js/jquery.min.js"></script>
+  <script>
+    $('div').animate({
+      'border-radius':'50%',
+      'margin-left':'300px',
+      // 'background-color':'red',
+    },1500,function(){
+      $('div').animate({
+        'margin-left':'0',
+      },1500,function(){
+        $('div').fadeOut(1500)
+      })
+    })
+  
+  </script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>浮动</title>
+  <style>
+    #father>div{
+      width: 200px;
+      height: 200px;
+      
+    }
+    .red{
+      background-color: red;
+      float: left;
+    }
+    .blue{
+      background-color: blue;
+      float: right;
+    }
+    .yellow{
+      background-color: yellow;
+      float: left;
+    }
+    span{
+      width: 200px;
+      height: 200px;
+      background-color: pink;
+      float:left;
+    }
+    #father{
+      border: 5px solid orangered;
+      background-color: chocolate;
+      /* float: left */
+      /* height: 300px; */
+      overflow: hidden;
+
+          }
+    
+  </style>
+</head>
+<body>
+  <div id="father">
+    <div class="red"></div>
+    <div class="blue"></div>
+    <div class="yellow"></div>
+    <span></span>
+  </div>
+</body>
+</html>

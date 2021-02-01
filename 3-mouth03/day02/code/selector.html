@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>选择器</title>
+
+  <style>
+    /* 选择器——查找页面元素的方式 */
+    /* 标签选择器 */
+    /* h1{
+      color: red;
+    } */
+    /* id选择器  查找页面中唯一的元素 */
+    /* #className{
+      color:red;
+    } */
+
+    /* 类选择器 查找页面中带有相同class属性值的元素 */
+    .red{
+      color:red;
+    }
+    .center{
+      /* 文字水平居中 */
+      text-align: center;
+    }
+    /* h1#className */
+    /* 找到带有class='red'的h1标签 */
+    h1.red{
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  <!-- h1.red -->
+  <!-- <h1 class="red"></h1> -->
+  <!-- h1.red.center -->
+  <h1 class="red center"></h1>
+  <!-- h1#title.red.center -->
+  <h1 id="title" class="red center"></h1>
+
+
+  <h1 id="className" class="red">这是一级标题</h1>
+  <h1 class="red  center">我们不一样</h1>
+  <p class="red">
+    Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corporis iusto quis ut non expedita voluptate, nisi eius distinctio autem hic ipsa voluptatibus, dicta a praesentium numquam temporibus labore ea cum!
+  </p>
+  <i class="red">hello world</i>
+</body>
+</html>

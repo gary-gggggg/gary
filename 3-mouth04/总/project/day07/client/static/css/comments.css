@@ -1,0 +1,222 @@
+@charset "gb2312";
+
+.f_l { float: left }
+.f_r { float: right }
+.l_box { width: 670px; }
+.r_box { width: 300px; }
+
+
+.moreSelect { width: 100%; margin: 30px 0 20px 0; overflow: hidden }
+.ms-top { height: 32px; border-bottom: solid 1px #EAEAEA; font-size: 14px }
+#tab li a { float: left; height: 32px; cursor: pointer; line-height: 32px; list-style-type: none; padding: 0 15px; }
+#tab li.cur a { color: #fff; background: #f77825; }
+.bd { display: none }
+.bd-news ul { padding: 10px 0 0 10px; background: url(../images/ph2.png) no-repeat 10px 29px; }
+.bd-news ul li { border-bottom: solid 1px #EAEAEA; line-height: 30px; height: 30px; overflow: hidden; font-size: 14px; padding: 10px 0 0 30px; }
+.bd-news ul li a { display: block; }
+.bd-news ul li a:hover { color: #000; }
+.bd-news ul li:hover { border-bottom: #000 1px solid;}/* ������ȥ��Ч�� */
+
+.logo h1{ font-size:30px; font-weight:blod; }
+.font-size-18{ font-size:18px; }
+
+
+/*#pagination{ float:right; margin:10px 0; }*/
+/*#pagination-flickr li { border:0; margin:0; padding:0; font-size:11px; list-style:none; /!* savers *!/ float:left; }*/
+/*#pagination-flickr a { border:solid 1px #DDDDDD; margin-right:2px; }*/
+/*#pagination-flickr .previous-off,#pagination-flickr .next-off { color:#666666; display:block; float:left; font-weight:bold; padding:3px 4px; }*/
+/*#pagination-flickr .next a,#pagination-flickr .previous a { font-weight:bold; border:solid 1px #FFFFFF; }*/
+/*#pagination-flickr .active { color:#ff0084; font-weight:bold; display:block; float:left; padding:4px 6px; }*/
+/*#pagination-flickr a:link,*/
+/*#pagination-flickr a:visited { color:#0063e3; display:block; float:left; padding:3px 6px; text-decoration:none; }*/
+/*#pagination-flickr a:hover { border:solid 1px #000; background:#0063DC; color:#FFF; }*/
+
+
+.postdate{float: left;display: block;background: url(../images/date.gif) no-repeat;height: 48px;width: 48px;line-height: 160%; margin-left: 10px; margin-right: 10px;}
+.month{text-transform: uppercase;text-align: center;color: #fcfff5;font-size: 12px;}
+.date{text-align: center;margin-top: 2px;font-size: 18px;}
+.postmeta{color: #666666;font-size: 12px;}
+.postmeta_category{background: url(../images/category.gif) no-repeat;padding: 0 5px 0 18px;}
+.postmeta_comments{background: url(../images/comments.gif) no-repeat;padding-left: 18px;}
+.postmeta_author{background: url(../images/author.gif) no-repeat;padding: 0 5px 0 18px;}
+.postmeta_time{background: url(../images/time.gif) no-repeat;padding-left: 18px;}
+.postmeta_category a{color: #666666;}
+.postmeta_comments a{color: #666666;}
+.title h2{line-height: 120%;}
+.title h2 a{color: #3e606f;font-size: 20px;line-height: 140%;}
+.title h2 a:hover{color: #db5104;}
+.title .postmeta a:hover{color: #db5104;}
+.entry {
+	margin: 20px 0 5px 0;
+	margin-left: 10px;
+	padding-bottom: 5px;
+	border-bottom: 1px dashed #cccccc;
+}
+
+.entry a {
+	text-decoration: none;
+	color: #0066cc;
+}
+
+.entry a:hover {
+	text-decoration: underline;
+	color: #db5104;
+}
+
+.tags {
+	background: url(../images/tags.png) no-repeat;
+	padding-left: 20px;
+	margin-left: 10px;
+	color: #666666;
+}
+
+.tags a {
+	color: #666666;
+	text-decoration: none;
+}
+
+.tags a:hover {
+	color: #db5104;
+	text-decoration: none;
+}
+
+.info {
+	padding: 10px 0;
+	color: #666666;
+	margin-left: 10px;
+}
+
+.info a{
+	color: #666666;
+}
+
+.info a:hover{
+	color: #ff5400;
+}
+
+/*/!*------------------------ Comments ------------------------*!/*/
+
+.commentstitle {
+	border-top: 1px solid #e3e5e4;
+}
+
+h3 {
+	color: #3e606f;
+	font-size: 18px;
+	line-height: 130%;
+}
+
+.commentstitle h3 {
+	padding-bottom: 10px;
+	padding-top: 10px;
+}
+
+.commentsnumber {
+	color: #db5104;
+}
+
+.trackback {
+	float: right;
+	padding-top: 10px;
+	padding-right: 12px;
+}
+
+.trackback a {
+	color: #999999;
+	font-size: 12px;
+}
+
+.commentlist {
+	color: #666666;
+	list-style-type: none;
+	padding: 10px 12px;
+}
+
+.commentlist a {
+	color: #0066cc;
+}
+
+.commentlist a:hover {
+	color: #db5104;
+	border-bottom: 1px solid #db5104;
+}
+
+.commentlist li {
+	border-bottom: 1px solid #e3e5e4;
+	padding: 15px 5px 30px 5px;
+}
+
+.alt {
+	background-color: #f9f9f9;
+}
+
+.top, .time a {
+	color: #999999;
+}
+
+.commentAvatar {
+	float: right;
+	width: 32px;
+	height: 32px;
+	display: block;
+	padding: 2px;
+	border: 1px solid #dddddd;
+	margin: 5px;
+}
+
+/*/!* ------------------------ Comments Form ------------------------ *!/*/
+
+#respond {font-size: 18px;color: #3e606f;margin-bottom: 15px;margin-top: 10px;}
+
+#commentform p {margin-bottom: 15px;}
+
+input#author, input#email, input#url, textarea#comment {margin-left: 12px;border: 2px solid #e3e5e4;padding: 2px;width: 200px;background-color: #f9f9f9;}
+
+textarea#comment {width: 450px;height: 200px;}
+
+input#author:focus, input#email:focus, input#url:focus, textarea#comment:focus {color: #666666;border: 2px solid #f1b39b;background-color: #ffffff;}
+
+label {margin-left: 5px;font-size: 12px;}
+
+input#submit {
+	margin-left: 12px;
+	background-color: #f9f9f9;
+	border: 2px solid #e3e5e4;
+	width: 80px;
+	padding: 2px 5px;
+	color: #666666;
+	font-size: 12px;
+}
+
+.login_info{
+	margin: 10px;
+}
+
+.reply{
+	padding-left:30px;
+}
+.commentPhoto{
+	background: url(../images/commentPhoto.jpg) no-repeat;
+	background-size: cover;
+	background-position: top center;
+}
+
+/* 弹窗 */
+/*垂直居中*/
+.verticalAlign{ vertical-align:middle; display:inline-block; height:100%; margin-left:-1px;}
+
+.xcConfirm .xc_layer{position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: #666666; opacity: 0.5; z-index: 2147000000;}
+.xcConfirm .popBox{position: fixed; left: 50%; top: 50%; background-color: #ffffff; z-index: 2147000001; width: 570px; height: 300px; margin-left: -285px; margin-top: -150px; border-radius: 5px; font-weight: bold; color: #535e66;}
+.xcConfirm .popBox .ttBox{height: 30px; line-height: 30px; padding: 14px 30px; border-bottom: solid 1px #eef0f1;}
+.xcConfirm .popBox .ttBox .tt{font-size: 18px; display: block; float: left; height: 30px; position: relative;}
+.xcConfirm .popBox .ttBox .clsBtn{display: block; cursor: pointer; width: 12px; height: 12px; position: absolute; top: 22px; right: 30px; background: url(../images/icons.png) -48px -96px no-repeat;}
+.xcConfirm .popBox .txtBox{margin: 30px 100px; height: 100px; overflow: hidden;}
+.xcConfirm .popBox .txtBox .bigIcon{float: left; margin-right: 20px; width: 48px; height: 48px; background-image: url(../img/icons.png); background-repeat: no-repeat; background-position: 48px 0;}
+.xcConfirm .popBox .txtBox p{ height: 84px; margin-top: 16px; line-height: 26px; overflow-x: hidden; overflow-y: auto;}
+.xcConfirm .popBox .txtBox p input{width: 364px; height: 30px; border: solid 1px #eef0f1; font-size: 18px; margin-top: 6px;}
+.xcConfirm .popBox .btnArea{border-top: solid 1px #eef0f1;}
+.xcConfirm .popBox .btnGroup{float: right;}
+.xcConfirm .popBox .btnGroup .sgBtn{margin-top: 14px; margin-right: 10px;}
+.xcConfirm .popBox .sgBtn{display: block; cursor: pointer; float: left; width: 95px; height: 35px; line-height: 35px; text-align: center; color: #FFFFFF; border-radius: 5px;}
+.xcConfirm .popBox .sgBtn.ok{background-color: #0095d9; color: #FFFFFF;}
+.xcConfirm .popBox .sgBtn.cancel{background-color: #546a79; color: #FFFFFF;}

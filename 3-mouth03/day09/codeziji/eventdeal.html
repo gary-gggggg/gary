@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>事件处理</title>
+</head>
+
+<body>
+  <button id="btn">添加元素</button>
+  <script src="/home/tarena/mouth03/day09/jquery.min.js"></script>
+  <script>
+    $(function () {
+      $('#btn').click(function () { $('body').prepend('<h1>giao</h1>') })
+      $('body').on('click','h1',function () {
+        console.log('giao')
+        $(this).css('color', 'red')
+      })
+      // $('h1').click(function () {
+      //   $(this).css('color', 'red')
+      // })
+    })
+
+  </script>
+</body>
+
+</html>

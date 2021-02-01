@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>表单控件的使用 </title>
+</head>
+<body>
+  <!-- 表单标签   收集用户输入的数据 将收集到的数据提交给指定的服务器-->
+  <!-- ?username=qtx&userpwd=q1231322 -->
+  <!-- 查询字符串 key=value&key=value... -->
+
+  <!-- get方式提交数据 将数据以查询字符串的方式拼接在地址中发送给服务器
+        1.不安全 
+        2.有大小限制 （不超过2kb）
+        3.有格式限制
+  -->
+  <!-- post方式提交数据 将数据放在请求主体一同发送给服务器 -->
+  <form action="" method="get" enctype="">
+    <!-- <label for="username">姓名：</label> -->
+    <input type="text" name="username" id="username" placeholder="请输入姓名" maxlength="10"> <br>
+
+    <input type="password" name="userpwd" placeholder="请输入密码"> <br>
+
+    <input type="submit">
+  </form>
+</body>
+</html>

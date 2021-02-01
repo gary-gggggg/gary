@@ -1,0 +1,36 @@
+/*对index样式的调整和补充*/
+
+/*每一张轮播图都定位到fader的左上角*/
+
+/*内边距的百分比是宽度的百分比*/
+.fader{
+  padding-top: 60%;
+}
+.fader img{
+  height: 100%;
+  width: 100%;
+}
+.fader .slide{
+  height: 100%;
+  position: absolute;
+  top:0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.lefta,.righta,.fader .pager_list{
+  z-index: 4;
+}
+.toppic li:last-child{
+  margin-top: 15px;
+}
+
+.pager_list li{
+  margin: 0 5px;
+  text-indent: -999999999999999px;
+  line-height: 1px
+}
+.lefta:hover,.right:hover{
+  cursor: pointer;
+}

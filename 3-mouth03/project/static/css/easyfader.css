@@ -1,0 +1,39 @@
+/* 对index.css样式的调整和补充 */
+
+/* 内外边距设置百分比单位是 统一指宽度的百分比 */
+.fader{
+  padding-top:60%;
+}
+/* 每一张轮播图都定位到fader左上角 */
+.fader .slide{
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.5s;
+}
+/* 轮播图最上方显示的图片的堆叠次序为3 如果想要显示左右箭头和页标 需要设置一个更大的堆叠次序 */
+.prev,.next,.pager_list{
+  z-index: 4;
+}
+
+.prev:hover,.next:hover{
+  cursor: pointer;
+}
+
+.pager_list li{
+  margin: 0 5px;
+  /* 利用文本缩进 隐藏不想要的文本 */
+  text-indent: -9999px;
+}
+
+
+/* 调整toppic 图片的距离 保持和轮播图对齐 */
+.toppic li:last-child{
+  margin-top:15px;
+}
+.pager_list:hover{
+  cursor: pointer;
+}

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<!--
+author:guojunyu
+date:2019-05-20
+desc:this demo is about blog.
+-->
+<head>
+  <script src="/static/js/jquery.min.js" type="text/javascript"></script>
+ </head>
+ <body id='show'>
+ </body>
+
+	<script>
+		$(function(){
+		
+			$.ajax({
+			"type":"get",
+			"url": "http://127.0.0.1:8000/v1/users",
+			"dataType": "json",
+			"success":function(res){
+			
+			var html = ''
+			html += '<table border=1>'
+			html += '<tr>'
+			html += '<td>name</td>'
+			html += '<td>email</td>'
+			html += '</tr>'
+			$.each(res.data, function(index, value){
+
+				html += '<tr>'
+				html += '<td>' + value.username + '</td>'
+				html += '<td>' + value.email + '</td>'
+			$('#show').html(html)
+			
+			
+			})
+			
+			}
+			
+			
+			})
+		
+		})
+	</script>

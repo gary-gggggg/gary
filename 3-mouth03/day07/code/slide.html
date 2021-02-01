@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>slide</title>
+
+  <style>
+    #slide {
+      position: relative;
+      width: 739px;
+      height: 419px;
+      padding: 0;
+      margin: 0;
+      list-style: none;
+    }
+
+    /* 16:00~16:15 */
+    .item {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 0;
+      /* 不透明度0(透明)~1(不透明) */
+      opacity: 0;
+      /* 过渡 */
+      transition: all 0.5s;
+    }
+
+    .active {
+      opacity: 1;
+      z-index: 5;
+    }
+  </style>
+
+</head>
+
+<body>
+  <ul id="slide">
+    <li class="item active">
+      <img src="../imgs/gm1-6.jpg" alt="">
+    </li>
+    <li class="item">
+      <img src="../imgs/gm2-6.jpg" alt="">
+    </li>
+    <li class="item">
+      <img src="../imgs/gm3-6.jpg" alt="">
+    </li>
+    <li class="item">
+      <img src="../imgs/gm4-6.jpg" alt="">
+    </li>
+    <li class="item">
+      <img src="../imgs/gm5-6.jpg" alt="">
+    </li>
+  </ul>
+
+  <script>
+    // 设置周期性定时器 
+    // 每隔1.5s自动 切换下一张图片
+    var items = document.getElementsByClassName('item');
+    var i = 0;//表示第一张图片(当前li的索引值)
+
+    // 切换下一张图片的函数
+    function next() {
+      // 切换下一张图片
+      // 找到当前的显示的li 去掉 class  active
+      items[i].className = 'item';
+      // 找到下一个li  添加class active
+      i++;
+      // 如果i递增以后值为items.length  没有图片
+      // 重置i的值
+      if (i == items.length) i = 0;
+      items[i].className = 'item active';
+    }
+    var timerId = setInterval(next, 1500);
+
+    // 当鼠标移入时 onmouseover 停止定时器
+    // 当鼠标移出时 onmouseout 启动定时器 
+    var slide = document.getElementById('slide');
+    slide.onmouseover = function () {
+      clearInterval(timerId)
+    }
+    slide.onmouseout = function () {
+      timerId = setInterval(next, 1500);
+    }
+
+
+    // 练习
+    // 将 imgs下l1-6和r1-6在页面中显示
+    // 分别放在ul左右两侧 垂直居中
+
+    // 鼠标点击左侧图片时 切换上一张图片
+    // 鼠标点击右侧图片时 切换下一张图片
+    
+    // 练习二
+    // 在页面中显示 距离2021年1月4日还有xx天xx时xx分xx秒  实现倒计时效果
+
+
+  </script>
+
+
+</body>
+
+</html>

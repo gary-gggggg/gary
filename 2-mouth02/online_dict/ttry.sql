@@ -1,0 +1,2 @@
+create table user_id (id int primary key auto_increment,name varchar(50) not null,passwd varchar(15) not null);
+create table history (id int primary key auto_increment,word varchar(30),n_id int not null,time datetime default now(),foreign key(n_id) references user_id(id) on delete cascade on update cascade);

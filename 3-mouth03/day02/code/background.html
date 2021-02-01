@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>背景属性</title>
+  <style>
+    div{
+      width: 25px;
+      height: 25px;
+      /* background-color: red; */
+      /* 当页面元素比背景图片大时  默认重复显示背景图片直到铺满元素 */
+      /* 当页面元素比背景图片小时  默认显示图片左上角的内容，超出部分不可见 */
+      background-image: url('../imgs/img01-1.png');
+      background-repeat: no-repeat;
+      background-position-y: -25px;
+    }
+  </style>
+</head>
+<body>
+  <!-- <img src="../imgs/img01-1.png" alt=""> -->
+  <div></div>
+</body>
+</html>

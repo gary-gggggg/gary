@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户注册</title>
+</head>
+<script src="/static/js/jquery-1.11.3.js"></script>
+<body>
+{% csrf_token %}
+<p>
+    用户名：<input type="text" id="uname">
+</p>
+<p>
+    密码：<input type="password" id="pwd">
+</p>
+<p>
+    <button id="btn">提交</button>
+</p>
+</body>
+<script>
+    $(function(){
+        $('#btn').click(function(){
+            // alter('giao');
+            var uname=$('#uname').val()
+            var pwd=$('#pwd').val()
+            var csrf=$("[name='csrfmiddlewaretoken']").val();
+            var params='uname='+uname+'&pwd='+pwd+'&csrfmiddlewaretoken='+csrf;
+            $.ajax({
+                url:'/register',
+                type:'post',
+                data:params,
+                success:function(res){
+                    alert(res)
+                }
+
+            })
+        })
+    })
+</script>
+</html>
